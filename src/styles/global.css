@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .section-full {
+    @apply min-h-screen w-full relative overflow-hidden;
+  }
+}
