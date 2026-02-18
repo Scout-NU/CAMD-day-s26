@@ -11,3 +11,14 @@ html {
     @apply min-h-screen w-full relative overflow-hidden;
   }
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
