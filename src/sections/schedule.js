@@ -96,9 +96,9 @@ const DEPARTMENT_COLORS = {
 
 export function render() {
   return `
-    <section class="p-8 pb-2 section-full flex flex-col" id="schedule">
+    <section class="p-8 pb-2 section-full flex flex-col font-akshar" id="schedule">
       <h2 
-        class="font-akshar font-medium text-black mb-10"
+        class="font-medium text-black mb-10"
         style="font-size: clamp(3rem, 6vw, 80px); line-height: 1.09;"
       >
         SCHEDULE
@@ -113,8 +113,9 @@ export function render() {
       <div class="w-full h-6 bg-[#67192F]"></div> 
 
       <div class="relative flex-1 max-w-full overflow-scroll no-scrollbar" id="schedule-frame">
-        <div style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="sticky top-0 h-16 outline-1 grid grid-cols-12 grid-rows-none" id="schedule-times"></div>
-        <div style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="absolute mt-16 flex flex-col gap-8 overscroll-none" id="schedule-events"></div>
+        <div id="schedule-times" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="sticky top-0 h-16 outline-1 grid grid-cols-12 grid-rows-none"></div>
+        <div id="schedule-events" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="absolute mt-16 flex flex-col gap-8 overscroll-none"></div>
+        <div id="event-modal-container" class="absolute inset-0 flex justify-center items-center z-999 hidden"></div>
       </div>
 
       <div class="w-full h-6 bg-[#67192F]"></div> 
@@ -125,7 +126,6 @@ export function render() {
 export function init() {
   renderSchedule();
   // TODO: add filter interactivity
-  // TODO: add modal interactivity
 }
 
 const renderSchedule = () => {
@@ -167,11 +167,12 @@ const renderSchedule = () => {
   EVENTS.sort((a, b) => {
     return militaryTimeToNumber(a.start) - militaryTimeToNumber(b.start);
   }).forEach((eventItem) => {
-    const event = document.createElement("div");
+    const event = document.createElement("button");
     event.className =
-      "p-2 text-lg font-light overflow-ellipsis whitespace-nowrap z-2";
+      "p-2 text-start text-lg font-light overflow-ellipsis whitespace-nowrap z-2";
     event.textContent = `${eventItem.name} | ${eventItem.location}`;
     event.style.backgroundColor = DEPARTMENT_COLORS[eventItem.department];
+    event.onclick = () => showModal(eventItem);
 
     const eventDuration =
       militaryTimeToNumber(eventItem.end) -
@@ -186,6 +187,41 @@ const renderSchedule = () => {
 
     scheduleEvents.appendChild(event);
   });
+};
+
+// Shows the event modal for some item. Clicking anywhere on the blackened area outside the modal will close it.
+const showModal = (eventItem) => {
+  const modalContainer = document.getElementById("event-modal-container");
+  modalContainer.style.display = "flex";
+  modalContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black background
+  modalContainer.innerHTML = `
+    <div class="flex flex-col items-center justify-between gap-2 rounded-md p-4 text-white" style="background-color:${DEPARTMENT_COLORS[eventItem.department]};">
+      <h3 class="text-4xl font-medium">${eventItem.name}</h3>
+      <div class="flex flex-row gap-8 text-xl font-medium">
+        <div class="flex flex-row gap-2 items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+            <path d="M11.2387 0C5.02875 0 0 5.04 0 11.25C0 17.46 5.02875 22.5 11.2387 22.5C17.46 22.5 22.5 17.46 22.5 11.25C22.5 5.04 17.46 0 11.2387 0ZM14.9513 16.5487L10.125 11.7113V5.625H12.375V10.7887L16.5487 14.9625L14.9513 16.5487Z" fill="white"/>
+          </svg>
+          <h4>${eventItem.start} - ${eventItem.end}</h4>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" viewBox="0 0 16 23" fill="none">
+            <path d="M7.875 0C3.52125 0 0 3.52125 0 7.875C0 13.7812 7.875 22.5 7.875 22.5C7.875 22.5 15.75 13.7812 15.75 7.875C15.75 3.52125 12.2288 0 7.875 0ZM7.875 10.6875C6.3225 10.6875 5.0625 9.4275 5.0625 7.875C5.0625 6.3225 6.3225 5.0625 7.875 5.0625C9.4275 5.0625 10.6875 6.3225 10.6875 7.875C10.6875 9.4275 9.4275 10.6875 7.875 10.6875Z" fill="white"/>
+          </svg>
+          <h4>${eventItem.location}</h4>
+        </div>
+      </div>
+      <p class="mt-4 font-light">A short description on what the event is about.</p>
+    </div>
+  `;
+
+  // Close modal on click outside
+  modalContainer.onclick = (e) => {
+    if (e.target === modalContainer) {
+      modalContainer.innerHTML = "";
+      modalContainer.style.display = "none";
+    }
+  };
 };
 
 // Utility function to convert military time string to numeric value
