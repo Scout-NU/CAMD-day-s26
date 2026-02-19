@@ -1,6 +1,6 @@
 export function render() {
   return `
-    <body class="font-akshar bg-gray-100 py-10 px-5">
+    <section id="departments" class="section-full font-akshar bg-gray-100 py-10 px-5">
         <div class="max-w-[1724px] mx-auto">
             <!-- Header -->
             <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-10 pl-12">
@@ -64,7 +64,7 @@ export function render() {
                 </div>
             </div>
         </div>
-    </body>    
+    </section>  
   `;
 }
 

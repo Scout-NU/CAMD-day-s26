@@ -10,11 +10,6 @@ export function render() {
         />
       </div>
 
-      <!-- Gradient blur overlay at top -->
-      <div class="absolute top-0 left-0 w-full z-[0] pointer-events-none" style="height: 160%;">
-        <div class="w-full h-1/3" style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); mask-image: linear-gradient(to bottom, black, transparent); -webkit-mask-image: linear-gradient(to bottom, black, transparent);"></div>
-      </div>
-
       <!-- Title text -->
       <div class="relative z-10 pl-12 pb-60">
         <span class="block text-white font-akshar font-bold tracking-tight" style="font-size: clamp(8rem, 13vw, 15.625rem); line-height: 0.85;">CAMD</span>
