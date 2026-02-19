@@ -6,7 +6,7 @@ export function render() {
         <img
           src="/assets/images/hero-bg.jpg"
           alt="CAMD mural at Northeastern University"
-          class="w-full h-full object-cover object-bottom"
+          class="w-full h-full object-cover" style="object-position: center 85%;"
         />
       </div>
 
