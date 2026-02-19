@@ -40,7 +40,7 @@ const EVENTS = [
     location: "Room F",
     start: "16:00",
     end: "18:00",
-    department: "Comm Studies",
+    department: "Communication Studies",
   },
   {
     name: "Event 7",
@@ -82,7 +82,7 @@ const EVENTS = [
     location: "Room L",
     start: "14:30",
     end: "16:30",
-    department: "Comm Studies",
+    department: "Communication Studies",
   },
 ];
 const DEPARTMENT_COLORS = {
@@ -91,31 +91,51 @@ const DEPARTMENT_COLORS = {
   Journalism: "#992EFC",
   Theatre: "#548C2F",
   Music: "#CC0068",
-  "Comm Studies": "#F9CB40",
+  "Communication Studies": "#F9CB40",
 };
 
 export function render() {
   return `
     <section class="p-8 pb-2 section-full flex flex-col font-akshar" id="schedule">
       <h2 
-        class="font-medium text-black mb-10"
+        class="font-medium mb-10"
         style="font-size: clamp(3rem, 6vw, 80px); line-height: 1.09;"
       >
         SCHEDULE
       </h2>
 
       <!-- Schedule Filter -->
-      <button class="w-full flex flex-row justify-end underline mb-4">
-        Filter by Department
-      </button>
+      <div class="relative w-full flex flex-row justify-end underline underline-black mb-4" id="schedule-filter-btn">
+        <button class="text-lg ">Filter by Department</button>
+        <div id="schedule-filter-panel" class="absolute top-full right-0 mt-2 w-max bg-white border border-gray-300 rounded-md shadow-lg hidden p-6 overflow-visible z-[999]">
+          <div class="grid grid-cols-2 gap-4 whitespace-nowrap">
+            ${Object.keys(DEPARTMENT_COLORS)
+              .map(
+                (dept) => `
+              <label class="flex items-center cursor-pointer p-3">
+                <input 
+                  type="checkbox" 
+                  class="department-filter" 
+                  data-department="${dept}"
+                  checked
+                  style="accent-color: ${DEPARTMENT_COLORS[dept]};"
+                />
+                <span class="ml-3 text-md p-2 text-white" style="background-color: ${DEPARTMENT_COLORS[dept]}; font-weight: 325">${dept}</span>
+              </label>
+            `,
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>
 
       <!-- Main Schedule -->
       <div class="w-full h-6 bg-[#67192F]"></div> 
 
       <div class="relative flex-1 max-w-full overflow-scroll no-scrollbar" id="schedule-frame">
-        <div id="schedule-times" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="sticky top-0 h-16 outline-1 grid grid-cols-12 grid-rows-none"></div>
-        <div id="schedule-events" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="absolute mt-16 flex flex-col gap-8 overscroll-none"></div>
-        <div id="event-modal-container" class="absolute inset-0 flex justify-center items-center z-999 hidden"></div>
+        <div id="schedule-times" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="sticky top-0 h-16 outline-1 grid grid-cols-12 z-50"></div>
+        <div id="schedule-events" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="absolute mt-16 flex flex-col gap-8 overscroll-none text-white"></div>
+        <div id="event-modal-container" class="sticky top-16 left-0 -translate-y-16 -mb-16 flex justify-center items-center hidden z-[99]"></div>
       </div>
 
       <div class="w-full h-6 bg-[#67192F]"></div> 
@@ -125,7 +145,12 @@ export function render() {
 
 export function init() {
   renderSchedule();
-  // TODO: add filter interactivity
+  mountFilter();
+  setupDepartmentFilters();
+
+  const eventModalContainer = document.getElementById("event-modal-container");
+  eventModalContainer.style.height =
+    document.getElementById("schedule-frame").offsetHeight + "px"; // Ensure modal container covers the entire schedule area
 }
 
 const renderSchedule = () => {
@@ -152,13 +177,13 @@ const renderSchedule = () => {
     const label = document.createElement("div");
     label.textContent = slot.label;
     label.className =
-      "text-left text-xl text-gray-dk whitespace-nowrap py-2 pl-2";
+      "text-left text-xl text-gray-dk whitespace-nowrap py-2 pl-2 z-99";
     label.style.gridColumnStart = index + 1;
     scheduleTimes.appendChild(label);
 
     const line = document.createElement("div");
     line.className =
-      "absolute h-[150%] -translate-y-1/4 w-[1px] bg-gray-300 z-1"; // Extend line beyond schedule height to account for padding
+      "absolute h-[150%] -translate-y-1/4 w-[1px] bg-gray-300 z-0"; // Extend line beyond schedule height to account for padding
     line.style.left = `${(index / timeSlots.length) * 100}%`;
     scheduleEvents.appendChild(line);
   });
@@ -169,7 +194,7 @@ const renderSchedule = () => {
   }).forEach((eventItem) => {
     const event = document.createElement("button");
     event.className =
-      "p-2 text-start text-lg font-light overflow-ellipsis whitespace-nowrap z-2";
+      "p-2 text-start text-lg font-light overflow-ellipsis whitespace-nowrap z-10 focus:outline-none";
     event.textContent = `${eventItem.name} | ${eventItem.location}`;
     event.style.backgroundColor = DEPARTMENT_COLORS[eventItem.department];
     event.onclick = () => showModal(eventItem);
@@ -188,6 +213,43 @@ const renderSchedule = () => {
     scheduleEvents.appendChild(event);
   });
 };
+
+function mountFilter() {
+  const filterBtn = document.getElementById("schedule-filter-btn");
+  const filterPanel = document.getElementById("schedule-filter-panel");
+  filterBtn.onclick = () => {
+    filterPanel.classList.toggle("hidden");
+  };
+}
+
+function setupDepartmentFilters() {
+  const checkboxes = document.querySelectorAll(".department-filter");
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      updateEventVisibility();
+    });
+  });
+}
+
+function updateEventVisibility() {
+  const selectedDepartments = new Set();
+  document
+    .querySelectorAll(".department-filter:checked")
+    .forEach((checkbox) => {
+      selectedDepartments.add(checkbox.dataset.department);
+    });
+
+  document.querySelectorAll("#schedule-events button").forEach((eventBtn) => {
+    const eventDepartment = Array.from(EVENTS).find(
+      (e) => `${e.name} | ${e.location}` === eventBtn.textContent,
+    )?.department;
+    if (eventDepartment && selectedDepartments.has(eventDepartment)) {
+      eventBtn.style.display = "";
+    } else {
+      eventBtn.style.display = "none";
+    }
+  });
+}
 
 // Shows the event modal for some item. Clicking anywhere on the blackened area outside the modal will close it.
 const showModal = (eventItem) => {
@@ -211,7 +273,7 @@ const showModal = (eventItem) => {
           <h4>${eventItem.location}</h4>
         </div>
       </div>
-      <p class="mt-4 font-light">A short description on what the event is about.</p>
+      <p class="mt-4 font-light">A short description of what the event is about.</p>
     </div>
   `;
 
@@ -222,6 +284,13 @@ const showModal = (eventItem) => {
       modalContainer.style.display = "none";
     }
   };
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modalContainer.innerHTML = "";
+      modalContainer.style.display = "none";
+    }
+  });
 };
 
 // Utility function to convert military time string to numeric value
