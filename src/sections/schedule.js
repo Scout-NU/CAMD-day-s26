@@ -107,8 +107,8 @@ export function render() {
       <!-- Schedule Filter -->
       <div class="relative w-full flex flex-row justify-end underline underline-black mb-4" id="schedule-filter-btn">
         <button class="text-lg ">Filter by Department</button>
-        <div id="schedule-filter-panel" class="absolute top-full right-0 mt-2 w-max bg-white border border-gray-300 rounded-md shadow-lg hidden p-6 overflow-visible z-[999]">
-          <div class="grid grid-cols-2 gap-4 whitespace-nowrap">
+        <div id="schedule-filter-panel" class="absolute top-full right-0 mt-2 w-max bg-white border border-gray-300 rounded-md shadow-lg hidden overflow-visible z-[999]">
+          <div class="grid grid-cols-2 whitespace-nowrap p-4">
             ${Object.keys(DEPARTMENT_COLORS)
               .map(
                 (dept) => `
@@ -217,9 +217,17 @@ const renderSchedule = () => {
 function mountFilter() {
   const filterBtn = document.getElementById("schedule-filter-btn");
   const filterPanel = document.getElementById("schedule-filter-panel");
-  filterBtn.onclick = () => {
-    filterPanel.classList.toggle("hidden");
+  filterBtn.onclick = (e) => {
+    if (e.target.tagName === "BUTTON" || filterBtn === e.target) {
+      filterPanel.classList.toggle("hidden");
+    }
   };
+
+  document.addEventListener("click", (e) => {
+    if (!filterBtn.contains(e.target)) {
+      filterPanel.classList.add("hidden");
+    }
+  });
 }
 
 function setupDepartmentFilters() {
