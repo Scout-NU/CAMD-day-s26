@@ -1,11 +1,470 @@
+const SCHEDULE_SCROLL_WIDTH = 300; // Width of the schedule scroll frame in vw
+const EVENTS = [
+  {
+    name: "Averbeck Book Talk",
+    location: "CFD (Ryder)",
+    start: "9:00",
+    end: "10:30",
+    department: "Architecture",
+  },
+  {
+    name: "Data Vis/Design Research Exhibition",
+    location: "CFD (Ryder)",
+    start: "10:30",
+    end: "13:00",
+    department: "Architecture",
+  },
+  {
+    name: "Kiel Moe: Forest First Book Launch",
+    location: "CFD (Ryder)",
+    start: "13:30",
+    end: "15:30",
+    department: "Architecture",
+  },
+  {
+    name: "Music Flash Mob Tabling - CAMD Showcase",
+    location: "Ryder Lobby",
+    start: "11:00",
+    end: "14:30",
+    department: "Architecture",
+  },
+  {
+    name: "Killion Mowkete Research Exhibition + CAMD Architecture Student Exhibition: Brandow/Silvers",
+    location: "151 Arch Hallway",
+    start: "8:30",
+    end: "11:00",
+    department: "Architecture",
+  },
+  {
+    name: "SoA Student Gallery: Growing Confident",
+    location: "151 Arch Hallway",
+    start: "11:00",
+    end: "12:30",
+    department: "Architecture",
+  },
+  {
+    name: "SoA Furniture Urbanism Exhibition",
+    location: "151 Arch Hallway",
+    start: "12:30",
+    end: "16:30",
+    department: "Architecture",
+  },
+  {
+    name: "Open Class: Topics in Visual Studies",
+    location: "Ryder 236",
+    start: "10:00",
+    end: "12:00",
+    department: "Art + Design",
+  },
+  {
+    name: "Photography Student Work Exhibition",
+    location: "Ryder Media Center/Hub",
+    start: "8:30",
+    end: "16:30",
+    department: "Art + Design",
+  },
+  {
+    name: "Todd Linker Paper Workshop",
+    location: "Ryder 239",
+    start: "13:00",
+    end: "15:00",
+    department: "Journalism",
+  },
+  {
+    name: "Open Class: Improv",
+    location: "Ryder 372",
+    start: "11:00",
+    end: "13:00",
+    department: "Theatre",
+  },
+  {
+    name: "Open Class: Improv",
+    location: "Ryder 372",
+    start: "15:00",
+    end: "17:00",
+    department: "Theatre",
+  },
+  {
+    name: "Open Class: Arch 5230",
+    location: "Ryder 334",
+    start: "9:00",
+    end: "12:00",
+    department: "Architecture",
+  },
+  {
+    name: "Open Class: Lighting Design",
+    location: "Ryder 334",
+    start: "15:00",
+    end: "17:00",
+    department: "Theatre",
+  },
+  {
+    name: "SoA Exhibition: Sustainable Material Ecologies",
+    location: "Ryder 3rd Floor",
+    start: "8:30",
+    end: "11:00",
+    department: "Art + Design",
+  },
+  {
+    name: "Graphic Design Exhibition: A+D Faculty",
+    location: "Ryder 3rd Floor",
+    start: "11:30",
+    end: "17:00",
+    department: "Art + Design",
+  },
+  {
+    name: "Open Class: Bob Ward Guitar",
+    location: "Ryder 354",
+    start: "13:30",
+    end: "15:30",
+    department: "Music",
+  },
+  {
+    name: "A+D Fundamentals Courses Exhibition of Student Work",
+    location: "Ryder 4th Floor",
+    start: "8:30",
+    end: "17:30",
+    department: "Art + Design",
+  },
+  {
+    name: "Open Class: Representational Drawing",
+    location: "Ryder 405",
+    start: "11:00",
+    end: "13:00",
+    department: "Art + Design",
+  }, 
+  {
+    name: "Immersive XR Demos",
+    location: "MSO XR Lab",
+    start: "10:30",
+    end: "12:00",
+    department: "Art + Design",
+  },
+  {
+    name: "MSO XR Immersive Media Lab: VR Headset and motion capture bodysuit demo",
+    location: "Holmes 374",
+    start: "8:30",
+    end: "17:30",
+    department: "Art + Design",
+  },
+  {
+    name: "Game Design Studio: student game examples + mini game tourney",
+    location: "Meserve 168",
+    start: "8:30",
+    end: "17:30",
+    department: "Art + Design",
+  },
+  {
+    name: "Open Class: Arch analysing structural behavior of precedent structures",
+    location: "Churchill 101",
+    start: "9:00",
+    end: "11:30",
+    department: "Architecture",
+  },
+  {
+    name: "Open Class: Experimental Video w/Julia",
+    location: "Shillman 205",
+    start: "13:30",
+    end: "15:00",
+    department: "Art + Design",
+  },
+  {
+    name: "SoA Re-Install of Ruggles Station Exhibition",
+    location: "Ruggles Studio",
+    start: "8:30",
+    end: "17:30",
+    department: "Art + Design",
+  },
+  {
+    name: "PhD Student Exhibition of Work",
+    location: "Raytheon",
+    start: "10:00",
+    end: "11:30",
+    department: "Art + Design",
+  },
+  {
+    name: "Donuts + Presentation w/Dean", 
+    location: "Cabral Center",
+    start: "8:00",
+    end: "9:30", 
+    department: "Art + Design",
+  },
+  {
+    name: "New Collaborative Research Showcase",
+    location: "Cabral Center", 
+    start: "10:00",
+    end: "12:00",
+    department: "Art + Design",
+  },
+  {
+    name: "Communication Studies PR Career Alumni Panel",
+    location: "Cabral Center", 
+    start: "14:00",
+    end: "15:00",
+    department: "Communication Studies"
+  },
+  {
+    name: "Michael Slackman DDL (Keynote)",
+    location: "Cabral Center", 
+    start: "16:30",
+    end: "18:00",
+    department: "Art + Design",
+  },
+  {
+    name: "Student Org Tabling/Co-Op Experience Showcase",
+    location: "CSC Indoor Quad",
+    start: "9:30",
+    end: "15:30",
+    department: "Communication Studies",
+  },
+  {
+    name: "Co-Op Alumni Presentation: Disney Pathways Open Classroom",
+    location: "CSCS McLeod Suites",
+    start: "10:30",
+    end: "13:30",
+    department: "Communication Studies",
+  },
+  {
+    name: "Ilya Vidrin: Proxies Open Dance Rehearsal",
+    location: "Studio Theatre",
+    start: "11:00",
+    end: "12:00",
+    department: "Music",
+  },
+  {
+    name: "Governing Babel: John Wihbey Book",
+    location: "Snell 350/350A",
+    start: "12:00",
+    end: "13:30",
+    department: "Communication Studies",
+  },
+  {
+    name: "Mills Intstitute WIP Talk: Shared Patterns: Form + Labor in Crafts/Generative AI", 
+    location: "(Oakland Campus): Aron Art Center 183, Building C", 
+    start: "14:30", 
+    end: "16:30",
+    department: "Art + Design",
+  }
+];
+const DEPARTMENT_COLORS = {
+  Architecture: "#DB5322",
+  "Art + Design": "#0097C2",
+  Journalism: "#992EFC",
+  Theatre: "#548C2F",
+  Music: "#CC0068",
+  "Communication Studies": "#F9CB40",
+};
+
 export function render() {
   return `
-    <section id="schedule" class="section-full flex items-center justify-center">
-      <h1 class="text-4xl text-camd-maroon">Schedule Section</h1>
+    <section class="p-8 pb-2 section-full flex flex-col font-akshar" id="schedule">
+      <h2 
+        class="font-medium mb-10"
+        style="font-size: clamp(3rem, 6vw, 80px); line-height: 1.09;"
+      >
+        SCHEDULE
+      </h2>
+
+      <!-- Schedule Filter -->
+      <div class="relative w-full flex flex-row justify-end underline underline-black mb-4" id="schedule-filter-btn">
+        <button class="text-lg ">Filter by Department</button>
+        <div id="schedule-filter-panel" class="absolute top-full right-0 mt-2 w-max bg-white border border-gray-300 rounded-md shadow-lg hidden p-6 overflow-visible z-[999]">
+          <div class="grid grid-cols-2 gap-4 whitespace-nowrap">
+            ${Object.keys(DEPARTMENT_COLORS)
+              .map(
+                (dept) => `
+              <label class="flex items-center cursor-pointer p-3">
+                <input 
+                  type="checkbox" 
+                  class="department-filter" 
+                  data-department="${dept}"
+                  checked
+                  style="accent-color: ${DEPARTMENT_COLORS[dept]};"
+                />
+                <span class="ml-3 text-md p-2 text-white" style="background-color: ${DEPARTMENT_COLORS[dept]}; font-weight: 325">${dept}</span>
+              </label>
+            `,
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Schedule -->
+      <div class="w-full h-6 bg-[#67192F]"></div> 
+
+      <div class="relative flex-1 max-w-full overflow-scroll" id="schedule-frame">
+        <div id="schedule-times" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="sticky top-0 h-16 outline-1 grid grid-cols-12 z-50"></div>
+        <div id="schedule-events" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="absolute mt-16 flex flex-col gap-8 overscroll-none text-white"></div>
+        <div id="event-modal-container" class="sticky top-16 left-0 -translate-y-16 -mb-16 flex justify-center items-center hidden z-[999]"></div>
+      </div>
+
+      <div class="w-full h-6 bg-[#67192F]"></div> 
     </section>
   `;
 }
 
 export function init() {
-  // interactivity goes here
+  renderSchedule();
+  mountFilter();
+  setupDepartmentFilters();
+
+  const eventModalContainer = document.getElementById("event-modal-container");
+  eventModalContainer.style.height =
+    document.getElementById("schedule-frame").offsetHeight + "px"; // Ensure modal container covers the entire schedule area
 }
+
+const renderSchedule = () => {
+  const timeSlots = [
+    { label: "8:00 AM", value: 8 },
+    { label: "9:00 AM", value: 9 },
+    { label: "10:00 AM", value: 10 },
+    { label: "11:00 AM", value: 11 },
+    { label: "12:00 PM", value: 12 },
+    { label: "1:00 PM", value: 13 },
+    { label: "2:00 PM", value: 14 },
+    { label: "3:00 PM", value: 15 },
+    { label: "4:00 PM", value: 16 },
+    { label: "5:00 PM", value: 17 },
+    { label: "6:00 PM", value: 18 },
+    { label: "7:00 PM", value: 19 },
+  ];
+
+  const scheduleTimes = document.getElementById("schedule-times");
+  const scheduleEvents = document.getElementById("schedule-events");
+
+  // Creating time labels and grid lines
+  timeSlots.forEach((slot, index) => {
+    const label = document.createElement("div");
+    label.textContent = slot.label;
+    label.className =
+      "text-left text-xl text-gray-dk whitespace-nowrap py-2 pl-2 z-99";
+    label.style.gridColumnStart = index + 1;
+    scheduleTimes.appendChild(label);
+
+    const line = document.createElement("div");
+    line.className =
+      "absolute h-[150%] -translate-y-1/4 w-[1px] bg-gray-300 z-0"; // Extend line beyond schedule height to account for padding
+    line.style.left = `${(index / timeSlots.length) * 100}%`;
+    scheduleEvents.appendChild(line);
+  });
+
+  // Populating events
+  EVENTS.sort((a, b) => {
+    return militaryTimeToNumber(a.start) - militaryTimeToNumber(b.start);
+  }).forEach((eventItem) => {
+    const event = document.createElement("button");
+    event.className =
+      "p-2 text-start text-lg font-light overflow-ellipsis whitespace-nowrap z-10 focus:outline-none";
+    event.textContent = `${eventItem.name} | ${eventItem.location}`;
+    event.style.backgroundColor = DEPARTMENT_COLORS[eventItem.department];
+    event.onclick = () => showModal(eventItem);
+
+    const eventDuration =
+      militaryTimeToNumber(eventItem.end) -
+      militaryTimeToNumber(eventItem.start);
+    const eventDayDuration =
+      timeSlots[timeSlots.length - 1].value - timeSlots[0].value + 1;
+    const eventStartOffset =
+      militaryTimeToNumber(eventItem.start) - timeSlots[0].value;
+
+    event.style.width = `${(eventDuration / eventDayDuration) * 100}%`;
+    event.style.marginLeft = `${(eventStartOffset / eventDayDuration) * 100}%`;
+
+    scheduleEvents.appendChild(event);
+  });
+};
+
+function mountFilter() {
+  const filterBtn = document.getElementById("schedule-filter-btn");
+  const filterPanel = document.getElementById("schedule-filter-panel");
+  filterBtn.onclick = () => {
+    filterPanel.classList.toggle("hidden");
+  };
+}
+
+function setupDepartmentFilters() {
+  const checkboxes = document.querySelectorAll(".department-filter");
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      updateEventVisibility();
+    });
+  });
+}
+
+function updateEventVisibility() {
+  const selectedDepartments = new Set();
+  document
+    .querySelectorAll(".department-filter:checked")
+    .forEach((checkbox) => {
+      selectedDepartments.add(checkbox.dataset.department);
+    });
+
+  document.querySelectorAll("#schedule-events button").forEach((eventBtn) => {
+    const eventDepartment = Array.from(EVENTS).find(
+      (e) => `${e.name} | ${e.location}` === eventBtn.textContent,
+    )?.department;
+    if (eventDepartment && selectedDepartments.has(eventDepartment)) {
+      eventBtn.style.display = "";
+    } else {
+      eventBtn.style.display = "none";
+    }
+  });
+}
+
+// Shows the event modal for some item. Clicking anywhere on the blackened area outside the modal will close it.
+const showModal = (eventItem) => {
+  const modalContainer = document.getElementById("event-modal-container");
+  modalContainer.style.display = "flex";
+  modalContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black background
+  modalContainer.innerHTML = `
+    <div class="max-h-[70%] max-w-[50%] flex flex-col items-center justify-between gap-2 rounded-md p-4 text-white" style="background-color:${DEPARTMENT_COLORS[eventItem.department]};">
+      <h3 class="max-w-full text-4xl p-2 font-medium whitespace-nowrap truncate">${eventItem.name}</h3>
+      <div class="max-w-full flex flex-row gap-8 text-xl font-medium whitespace-nowrap">
+        <div class="flex flex-row gap-2 items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+            <path d="M11.2387 0C5.02875 0 0 5.04 0 11.25C0 17.46 5.02875 22.5 11.2387 22.5C17.46 22.5 22.5 17.46 22.5 11.25C22.5 5.04 17.46 0 11.2387 0ZM14.9513 16.5487L10.125 11.7113V5.625H12.375V10.7887L16.5487 14.9625L14.9513 16.5487Z" fill="white"/>
+          </svg>
+          <h4>${militaryTimeToStandard(eventItem.start)} - ${militaryTimeToStandard(eventItem.end)}</h4>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" viewBox="0 0 16 23" fill="none">
+            <path d="M7.875 0C3.52125 0 0 3.52125 0 7.875C0 13.7812 7.875 22.5 7.875 22.5C7.875 22.5 15.75 13.7812 15.75 7.875C15.75 3.52125 12.2288 0 7.875 0ZM7.875 10.6875C6.3225 10.6875 5.0625 9.4275 5.0625 7.875C5.0625 6.3225 6.3225 5.0625 7.875 5.0625C9.4275 5.0625 10.6875 6.3225 10.6875 7.875C10.6875 9.4275 9.4275 10.6875 7.875 10.6875Z" fill="white"/>
+          </svg>
+          <h4>${eventItem.location}</h4>
+        </div>
+      </div>
+      <p class="mt-4 font-light">A short description on what the event is about.</p>
+    </div>
+  `;
+
+  // Close modal on click outside
+  modalContainer.onclick = (e) => {
+    if (e.target === modalContainer) {
+      modalContainer.innerHTML = "";
+      modalContainer.style.display = "none";
+    }
+  };
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modalContainer.innerHTML = "";
+      modalContainer.style.display = "none";
+    }
+  });
+};
+
+// Utility function for coverting military time string to standard time string
+const militaryTimeToStandard = (timeString) => {
+  const [hours, minutes] = timeString.split(":").map(Number);
+  const period = hours >= 12 ? "PM" : "AM";
+  const standardHours = hours % 12 === 0 ? 12 : hours % 12;
+  return `${standardHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+}
+
+// Utility function to convert military time string to numeric value
+// Example: "8:00" -> 8.0, "9:30" -> 9.5, "13:45" -> 13.75
+const militaryTimeToNumber = (timeString) => {
+  const [hours, minutes] = timeString.split(":").map(Number);
+  return hours + minutes / 60;
+};

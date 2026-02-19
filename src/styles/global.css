@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Real Head Pro';
+  src: url('/assets/fonts/RealHeadPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Real Head Pro';
+  src: url('/assets/fonts/RealHeadPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -9,5 +20,16 @@ html {
 @layer components {
   .section-full {
     @apply min-h-screen w-full relative overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
