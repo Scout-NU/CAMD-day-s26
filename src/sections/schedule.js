@@ -3,16 +3,6 @@ const EVENTS = [
   {
     name: "The Mills Institute and Mills College Art Museum Collaborative Fellowship, Work-in-progress Talk: Shared Patterns: Form and Labor in Crafts and Generative AI",
     location: "Oakland Campus: Aron Art Center 183, Building C",
-    start: "9:00",
-    end: "16:00",
-    department: "Mills Institute",
-    eventType: "Book Talk",
-    description:
-      "PhD student Sei Jung talks about her museum collection-based research project for the Mills Institute and Mills College Art Museum Collaborative Fellowship, exploring shared patterns at the intersection of crafts and generative AI.",
-  },
-  {
-    name: "The Mills Institute and Mills College Art Museum Collaborative Fellowship, Work-in-progress Talk: Shared Patterns: Form and Labor in Crafts and Generative AI",
-    location: "Oakland Campus: Aron Art Center 183, Building C",
     start: "15:00",
     end: "16:00",
     department: "Mills Institute",
