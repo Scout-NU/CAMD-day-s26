@@ -1,302 +1,352 @@
-const SCHEDULE_SCROLL_WIDTH = 300; // Width of the schedule scroll frame in vw
+const SCHEDULE_SCROLL_HEIGHT = 250; // Height of the schedule scroll frame in vw
 const EVENTS = [
   {
-    name: "Averbeck Book Talk",
-    location: "CFD (Ryder)",
-    start: "9:00",
+    name: "The Mills Institute and Mills College Art Museum Collaborative Fellowship, Work-in-progress Talk: Shared Patterns: Form and Labor in Crafts and Generative AI",
+    location: "Oakland Campus: Aron Art Center 183, Building C",
+    start: "15:00",
+    end: "16:00",
+    department: "Mills Institute",
+    eventType: "Book Talk",
+    description:
+      "PhD student Sei Jung talks about her museum collection-based research project for the Mills Institute and Mills College Art Museum Collaborative Fellowship, exploring shared patterns at the intersection of crafts and generative AI.",
+  },
+  {
+    name: "Collective Living and the Architectural Imaginary: Book Talk with Anthony Averbeck",
+    location: "CfD, Ryder Hall",
+    start: "9:30",
     end: "10:30",
-    department: "Architecture",
+    department: "SoA",
+    eventType: "Book Talk",
+    description: "",
   },
   {
-    name: "Data Vis/Design Research Exhibition",
-    location: "CFD (Ryder)",
-    start: "10:30",
-    end: "13:00",
-    department: "Architecture",
+    name: "Forest First Timber Building: Book Talk with Kiel Moe",
+    location: "CfD, Ryder Hall",
+    start: "14:00",
+    end: "15:00",
+    department: "SoA",
+    eventType: "Book Talk",
+    description: "",
   },
   {
-    name: "Kiel Moe: Forest First Book Launch",
-    location: "CFD (Ryder)",
-    start: "13:30",
-    end: "15:30",
-    department: "Architecture",
-  },
-  {
-    name: "Music Flash Mob Tabling - CAMD Showcase",
+    name: "College of Arts, Media and Design Community Showcase",
     location: "Ryder Lobby",
     start: "11:00",
-    end: "14:30",
-    department: "Architecture",
+    end: "14:00",
+    department: "CAMD",
+    eventType: "Showcase",
+    description: "",
   },
   {
-    name: "Killion Mowkete Research Exhibition + CAMD Architecture Student Exhibition: Brandow/Silvers",
-    location: "151 Arch Hallway",
-    start: "8:30",
-    end: "11:00",
-    department: "Architecture",
+    name: "City of Boston Participatory Budget Showcase",
+    location: "CfD, Ryder Hall",
+    start: "12:00",
+    end: "13:00",
+    department: "CfD",
+    eventType: "Showcase",
+    description: "",
   },
   {
-    name: "SoA Student Gallery: Growing Confident",
-    location: "151 Arch Hallway",
-    start: "11:00",
-    end: "12:30",
-    department: "Architecture",
+    name: '"Our Energy Nexus" Exhibit Presentation',
+    location: "CfD, Ryder Hall",
+    start: "13:00",
+    end: "14:00",
+    department: "CfD",
+    eventType: "Showcase",
+    description: "",
   },
   {
-    name: "SoA Furniture Urbanism Exhibition",
-    location: "151 Arch Hallway",
-    start: "12:30",
-    end: "16:30",
-    department: "Architecture",
+    name: "Art + Design Open Department Hours",
+    location: "Ryder 239",
+    start: "10:00",
+    end: "13:00",
+    department: "A+D",
+    eventType: "Open Classroom",
+    description: "",
   },
   {
-    name: "Open Class: Topics in Visual Studies",
+    name: "Paper and Graphic Demo",
+    location: "Ryder 239",
+    start: "11:30",
+    end: "12:00",
+    department: "A+D",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Open Classroom: ARTH3000: Topics in Graphic Medicine",
     location: "Ryder 236",
     start: "10:00",
-    end: "12:00",
-    department: "Art + Design",
-  },
-  {
-    name: "Photography Student Work Exhibition",
-    location: "Ryder Media Center/Hub",
-    start: "8:30",
-    end: "16:30",
-    department: "Art + Design",
-  },
-  {
-    name: "Todd Linker Paper Workshop",
-    location: "Ryder 239",
-    start: "13:00",
-    end: "15:00",
-    department: "Journalism",
-  },
-  {
-    name: "Open Class: Improv",
-    location: "Ryder 372",
-    start: "11:00",
-    end: "13:00",
-    department: "Theatre",
-  },
-  {
-    name: "Open Class: Improv",
-    location: "Ryder 372",
-    start: "15:00",
-    end: "17:00",
-    department: "Theatre",
-  },
-  {
-    name: "Open Class: Arch 5230",
-    location: "Ryder 334",
-    start: "9:00",
-    end: "12:00",
-    department: "Architecture",
-  },
-  {
-    name: "Open Class: Lighting Design",
-    location: "Ryder 334",
-    start: "15:00",
-    end: "17:00",
-    department: "Theatre",
-  },
-  {
-    name: "SoA Exhibition: Sustainable Material Ecologies",
-    location: "Ryder 3rd Floor",
-    start: "8:30",
     end: "11:00",
-    department: "Art + Design",
+    department: "A+D",
+    eventType: "Open Classroom",
+    description: "",
   },
   {
-    name: "Graphic Design Exhibition: A+D Faculty",
-    location: "Ryder 3rd Floor",
-    start: "11:30",
-    end: "17:00",
-    department: "Art + Design",
+    name: "Exhibition of Photography Student Work",
+    location: "2nd Floor Bulletin Boards",
+    start: "8:30",
+    end: "17:30",
+    department: "A+D",
+    eventType: "Showcase",
+    description: "",
   },
   {
-    name: "Open Class: Bob Ward Guitar",
+    name: "Exhibition of Faculty Graphic Design Work",
+    location: "3rd Floor White Shelves",
+    start: "8:30",
+    end: "17:30",
+    department: "A+D",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Exhibition of Art + Design Fundamentals Student Work",
+    location: "4th Floor Hallway",
+    start: "8:30",
+    end: "17:30",
+    department: "A+D",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Screening of Documentary Recording of Filial; scenes for puppets, vocalist and chamber ensemble with Hubert Ho",
+    location: "Ryder 354",
+    start: "10:00",
+    end: "11:00",
+    department: "Music",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Embedded AI for Audio and Music Applications with Victor Zappi",
+    location: "Ryder 354",
+    start: "11:00",
+    end: "12:00",
+    department: "Music/Research",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Student Presentation on Data Sonification",
+    location: "Ryder 354",
+    start: "12:00",
+    end: "13:00",
+    department: "Music/Research",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Open Guitar Workshop with Bob Ward",
     location: "Ryder 354",
     start: "13:30",
-    end: "15:30",
-    department: "Music",
-  },
-  {
-    name: "A+D Fundamentals Courses Exhibition of Student Work",
-    location: "Ryder 4th Floor",
-    start: "8:30",
-    end: "17:30",
-    department: "Art + Design",
-  },
-  {
-    name: "Open Class: Representational Drawing",
-    location: "Ryder 405",
-    start: "11:00",
-    end: "13:00",
-    department: "Art + Design",
-  }, 
-  {
-    name: "Immersive XR Demos",
-    location: "MSO XR Lab",
-    start: "10:30",
-    end: "12:00",
-    department: "Art + Design",
-  },
-  {
-    name: "MSO XR Immersive Media Lab: VR Headset and motion capture bodysuit demo",
-    location: "Holmes 374",
-    start: "8:30",
-    end: "17:30",
-    department: "Art + Design",
-  },
-  {
-    name: "Game Design Studio: student game examples + mini game tourney",
-    location: "Meserve 168",
-    start: "8:30",
-    end: "17:30",
-    department: "Art + Design",
-  },
-  {
-    name: "Open Class: Arch analysing structural behavior of precedent structures",
-    location: "Churchill 101",
-    start: "9:00",
-    end: "11:30",
-    department: "Architecture",
-  },
-  {
-    name: "Open Class: Experimental Video w/Julia",
-    location: "Shillman 205",
-    start: "13:30",
     end: "15:00",
-    department: "Art + Design",
+    department: "Music",
+    eventType: "Open Classroom",
+    description: "",
   },
   {
-    name: "SoA Re-Install of Ruggles Station Exhibition",
-    location: "Ruggles Studio",
-    start: "8:30",
-    end: "17:30",
-    department: "Art + Design",
+    name: "Open Classroom: Improvisation with Sylke Meyer",
+    location: "Ryder 372",
+    start: "11:45",
+    end: "13:25",
+    department: "Theatre",
+    eventType: "Open Classroom",
+    description: "",
   },
   {
-    name: "PhD Student Exhibition of Work",
-    location: "Raytheon",
-    start: "10:00",
+    name: "Open Classroom: Improvisation with Sylke Meyer",
+    location: "Ryder 372",
+    start: "15:25",
+    end: "17:05",
+    department: "Theatre",
+    eventType: "Open Classroom",
+    description: "",
+  },
+  {
+    name: "Open Classroom: Lighting Design with Caitlin Smith Rappoport",
+    location: "Ryder 334",
+    start: "15:25",
+    end: "17:05",
+    department: "Theatre",
+    eventType: "Open Classroom",
+    description: "",
+  },
+  {
+    name: "Open Classroom: ARCH5230: Structural Behavior of Precedent Structures with Demi Fang",
+    location: "Churchill 101",
+    start: "9:50",
     end: "11:30",
-    department: "Art + Design",
-  },
-  {
-    name: "Donuts + Presentation w/Dean", 
-    location: "Cabral Center",
-    start: "8:00",
-    end: "9:30", 
-    department: "Art + Design",
+    department: "SoA",
+    eventType: "Open Classroom",
+    description: "",
   },
   {
     name: "New Collaborative Research Showcase",
-    location: "Cabral Center", 
-    start: "10:00",
-    end: "12:00",
-    department: "Art + Design",
+    location: "Cabral Center",
+    start: "10:30",
+    end: "11:30",
+    department: "CAMD/Research",
+    eventType: "Showcase",
+    description:
+      "A series of short talks on groundbreaking collaborative research projects in CAMD. Researchers and creative practitioners across disciplines present seven-minute talks on work spanning biohybrid smart textiles, health data sonification, AI-human creativity, and sustainable urban planning.",
   },
   {
-    name: "Communication Studies PR Career Alumni Panel",
-    location: "Cabral Center", 
-    start: "14:00",
-    end: "15:00",
-    department: "Communication Studies"
-  },
-  {
-    name: "Michael Slackman DDL (Keynote)",
-    location: "Cabral Center", 
+    name: "The State of Journalism — and Its Future: Dean's Distinguished Lecture with Michael Slackman",
+    location: "Cabral Center",
     start: "16:30",
     end: "18:00",
-    department: "Art + Design",
+    department: "CAMD/Journalism",
+    eventType: "Book Talk",
+    description: "",
   },
   {
-    name: "Student Org Tabling/Co-Op Experience Showcase",
-    location: "CSC Indoor Quad",
-    start: "9:30",
-    end: "15:30",
-    department: "Communication Studies",
+    name: "College of Arts, Media and Design Student Showcase",
+    location: "Curry Indoor Quad",
+    start: "10:00",
+    end: "14:00",
+    department: "CAMD",
+    eventType: "Showcase",
+    description: "",
   },
   {
-    name: "Co-Op Alumni Presentation: Disney Pathways Open Classroom",
-    location: "CSCS McLeod Suites",
-    start: "10:30",
-    end: "13:30",
-    department: "Communication Studies",
+    name: "Embodied Presentation Skills",
+    location: "Cabral Center",
+    start: "9:00",
+    end: "10:00",
+    department: "CAMD/Comm Studies/Theatre",
+    eventType: "Workshop",
+    description:
+      "A 20-minute practical workshop giving participants tools to deliver more impactful presentations. Anchored in embodied rhetoric, attendees learn physical and mental preparation strategies to awaken their body, voice, speaking, and delivery.",
   },
   {
-    name: "Ilya Vidrin: Proxies Open Dance Rehearsal",
-    location: "Studio Theatre",
+    name: 'Open Rehearsal: "Proxies" by Ilya Vidrin',
+    location: "Studio Theatre, CSC",
     start: "11:00",
     end: "12:00",
-    department: "Music",
+    department: "CfA/Theatre",
+    eventType: "Open Classroom",
+    description: "",
   },
   {
-    name: "Governing Babel: John Wihbey Book",
+    name: '"Governing Babel": Book Talk with John Wihbey',
     location: "Snell 350/350A",
     start: "12:00",
     end: "13:30",
-    department: "Communication Studies",
+    department: "CTM/Comm Studies",
+    eventType: "Book Talk",
+    description: "",
   },
   {
-    name: "Mills Intstitute WIP Talk: Shared Patterns: Form + Labor in Crafts/Generative AI", 
-    location: "(Oakland Campus): Aron Art Center 183, Building C", 
-    start: "14:30", 
-    end: "16:30",
-    department: "Art + Design",
-  }
+    name: "Stabilized Earth Blocks (SEB) Research Samples Showcase with Killion Mokwete",
+    location: "Ryder Hall Arch Hallway",
+    start: "8:30",
+    end: "17:30",
+    department: "SoA",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Africa Built Heritage: Digital Documentation of Heritage Sites in Benin VR Demonstration with Killion Mokwete",
+    location: "Ryder Hall Arch Hallway / MSO",
+    start: "8:30",
+    end: "17:30",
+    department: "SoA",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Benin Built Heritage: Master's Student Research Showcase",
+    location: "Ruggles",
+    start: "8:30",
+    end: "17:30",
+    department: "SoA",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
+    name: "Inside PR with CAMD Alumni: Strategy, Storytelling, and Real World Impact",
+    location: "Cabral Center",
+    start: "14:00",
+    end: "15:00",
+    department: "Comm Studies",
+    eventType: "Book Talk",
+    description: "",
+  },
+  {
+    name: "Sense: The Act of Engaging",
+    location: "Raytheon",
+    start: "10:00",
+    end: "12:00",
+    department: "CAMD/PhD",
+    eventType: "Showcase",
+    description:
+      "A group exhibition from the CAMD PhD Program in Interdisciplinary Design and Media, featuring immersive installations, sound art, data physicalization, augmented reality, and game design. The exhibition examines how our senses are structured by perception and how they might be reconfigured.",
+  },
+  {
+    name: "Open Classroom: ARCH 5120: Comprehensive Design",
+    location: "Ruggles",
+    start: "13:35",
+    end: "17:00",
+    department: "SoA",
+    eventType: "Open Classroom",
+    description:
+      'A pin-up review open to all — walk through the studio and observe or participate in discussions around programming and 1/16" scale models of student proposals.',
+  },
+  {
+    name: "Open Classroom: ARCH 6340: AI in Architecture",
+    location: "Ryder 299",
+    start: "9:50",
+    end: "11:30",
+    department: "SoA",
+    eventType: "Open Classroom",
+    description:
+      "Students hold a debate on the use of AI in architectural pedagogy at Northeastern University, with background context from the instructor and planned audience participation and conversation.",
+  },
 ];
-const DEPARTMENT_COLORS = {
-  Architecture: "#DB5322",
-  "Art + Design": "#0097C2",
-  Journalism: "#992EFC",
-  Theatre: "#548C2F",
-  Music: "#CC0068",
-  "Communication Studies": "#F9CB40",
+
+const EVENT_TYPE_COLORS = {
+  "Open Classroom": "#DB5322",
+  Showcase: "#0097C2",
+  "Book Talk": "#992EFC",
+  Workshop: "#548C2F",
+  // Music: "#CC0068",
+  // "Communication Studies": "#F9CB40",
 };
 
 export function render() {
   return `
-    <section class="p-8 pb-2 section-full flex flex-col font-akshar" id="schedule">
+    <section class="section-full flex flex-col p-8 pb-2 my-20 font-akshar" id="schedule">
       <h2 
-        class="font-medium mb-10"
+        class="font-medium mb-6"
         style="font-size: clamp(3rem, 6vw, 80px); line-height: 1.09;"
       >
         SCHEDULE
       </h2>
 
-      <!-- Schedule Filter -->
-      <div class="relative w-full flex flex-row justify-end underline underline-black mb-4" id="schedule-filter-btn">
-        <button class="text-lg ">Filter by Department</button>
-        <div id="schedule-filter-panel" class="absolute top-full right-0 mt-2 w-max bg-white border border-gray-300 rounded-md shadow-lg hidden p-6 overflow-visible z-[999]">
-          <div class="grid grid-cols-2 gap-4 whitespace-nowrap">
-            ${Object.keys(DEPARTMENT_COLORS)
-              .map(
-                (dept) => `
-              <label class="flex items-center cursor-pointer p-3">
-                <input 
-                  type="checkbox" 
-                  class="department-filter" 
-                  data-department="${dept}"
-                  checked
-                  style="accent-color: ${DEPARTMENT_COLORS[dept]};"
-                />
-                <span class="ml-3 text-md p-2 text-white" style="background-color: ${DEPARTMENT_COLORS[dept]}; font-weight: 325">${dept}</span>
-              </label>
+      <!-- Schedule Legend -->
+      <div class="flex flex-row justify-start items-center w-full mb-4">
+        <div class="flex flex-wrap gap-4 justify-center">
+          ${Object.entries(EVENT_TYPE_COLORS)
+            .map(
+              ([dept, color]) => `
+              <div class="flex items-center">
+                <div class="w-4 h-4 mr-2 rounded-sm" style="background-color: ${color};"></div>
+                <span class="text-sm">${dept}</span>
+              </div>
             `,
-              )
-              .join("")}
-          </div>
+            )
+            .join("")}
         </div>
       </div>
 
       <!-- Main Schedule -->
       <div class="w-full h-6 bg-[#67192F]"></div> 
 
-      <div class="relative flex-1 max-w-full overflow-scroll" id="schedule-frame">
-        <div id="schedule-times" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="sticky top-0 h-16 outline-1 grid grid-cols-12 z-50"></div>
-        <div id="schedule-events" style="width: ${SCHEDULE_SCROLL_WIDTH}vw;" class="absolute mt-16 flex flex-col gap-8 overscroll-none text-white"></div>
-        <div id="event-modal-container" class="sticky top-16 left-0 -translate-y-16 -mb-16 flex justify-center items-center hidden z-[999]"></div>
+      <div class="relative w-full h-[75vh] overflow-scroll" id="schedule-frame">
+        <div id="schedule-times" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 grid grid-rows-12 z-50 pointer-events-none"></div>
+        <div id="schedule-events" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 w-full flex flex-row px-24 gap-8 overscroll-none text-[#F6F6F6]"></div>
+        <div id="event-modal-container" class="sticky top-0 left-0 flex h-full justify-center items-center pointer-events-none z-[999]"></div>
       </div>
 
       <div class="w-full h-6 bg-[#67192F]"></div> 
@@ -333,31 +383,15 @@ const renderSchedule = () => {
   const scheduleTimes = document.getElementById("schedule-times");
   const scheduleEvents = document.getElementById("schedule-events");
 
-  // Creating time labels and grid lines
-  timeSlots.forEach((slot, index) => {
-    const label = document.createElement("div");
-    label.textContent = slot.label;
-    label.className =
-      "text-left text-xl text-gray-dk whitespace-nowrap py-2 pl-2 z-99";
-    label.style.gridColumnStart = index + 1;
-    scheduleTimes.appendChild(label);
-
-    const line = document.createElement("div");
-    line.className =
-      "absolute h-[150%] -translate-y-1/4 w-[1px] bg-gray-300 z-0"; // Extend line beyond schedule height to account for padding
-    line.style.left = `${(index / timeSlots.length) * 100}%`;
-    scheduleEvents.appendChild(line);
-  });
-
   // Populating events
   EVENTS.sort((a, b) => {
     return militaryTimeToNumber(a.start) - militaryTimeToNumber(b.start);
   }).forEach((eventItem) => {
     const event = document.createElement("button");
     event.className =
-      "p-2 text-start text-lg font-light overflow-ellipsis whitespace-nowrap z-10 focus:outline-none";
-    event.textContent = `${eventItem.name} | ${eventItem.location}`;
-    event.style.backgroundColor = DEPARTMENT_COLORS[eventItem.department];
+      "flex items-start justify-center p-2 w-30 text-start text-lg font-light overflow-ellipsis z-10 focus:outline-none cursor-pointer";
+    event.textContent = `${eventItem.name}`;
+    event.style.backgroundColor = EVENT_TYPE_COLORS[eventItem.eventType];
     event.onclick = () => showModal(eventItem);
 
     const eventDuration =
@@ -368,59 +402,40 @@ const renderSchedule = () => {
     const eventStartOffset =
       militaryTimeToNumber(eventItem.start) - timeSlots[0].value;
 
-    event.style.width = `${(eventDuration / eventDayDuration) * 100}%`;
-    event.style.marginLeft = `${(eventStartOffset / eventDayDuration) * 100}%`;
+    event.style.height = `${(eventDuration / eventDayDuration) * SCHEDULE_SCROLL_HEIGHT}vh`;
+    event.style.marginTop = `${(eventStartOffset / eventDayDuration) * SCHEDULE_SCROLL_HEIGHT}vh`;
 
     scheduleEvents.appendChild(event);
   });
+
+  // Creating time labels and grid lines
+  timeSlots.forEach((slot, index) => {
+    const label = document.createElement("div");
+    label.textContent = slot.label;
+    label.className =
+      "text-left text-xl text-gray-dk whitespace-nowrap py-2 pl-2 z-99";
+    label.style.gridRowStart = index + 1;
+    scheduleTimes.appendChild(label);
+
+    const line = document.createElement("div");
+    line.className = "absolute left-0 h-[1px] bg-gray-300 z-0"; // Extend line beyond schedule height to account for padding
+    line.style.top = `${(index / timeSlots.length) * 100}%`;
+    line.style.width = scheduleEvents.scrollWidth + "px"; // Extend line width to cover entire schedule width (including padding)
+    console.log(scheduleEvents.scrollWidth);
+    scheduleEvents.appendChild(line);
+  });
 };
-
-function mountFilter() {
-  const filterBtn = document.getElementById("schedule-filter-btn");
-  const filterPanel = document.getElementById("schedule-filter-panel");
-  filterBtn.onclick = () => {
-    filterPanel.classList.toggle("hidden");
-  };
-}
-
-function setupDepartmentFilters() {
-  const checkboxes = document.querySelectorAll(".department-filter");
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      updateEventVisibility();
-    });
-  });
-}
-
-function updateEventVisibility() {
-  const selectedDepartments = new Set();
-  document
-    .querySelectorAll(".department-filter:checked")
-    .forEach((checkbox) => {
-      selectedDepartments.add(checkbox.dataset.department);
-    });
-
-  document.querySelectorAll("#schedule-events button").forEach((eventBtn) => {
-    const eventDepartment = Array.from(EVENTS).find(
-      (e) => `${e.name} | ${e.location}` === eventBtn.textContent,
-    )?.department;
-    if (eventDepartment && selectedDepartments.has(eventDepartment)) {
-      eventBtn.style.display = "";
-    } else {
-      eventBtn.style.display = "none";
-    }
-  });
-}
 
 // Shows the event modal for some item. Clicking anywhere on the blackened area outside the modal will close it.
 const showModal = (eventItem) => {
   const modalContainer = document.getElementById("event-modal-container");
   modalContainer.style.display = "flex";
   modalContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black background
+  modalContainer.style.pointerEvents = "auto"; // Enable pointer events to allow clicking outside the modal to close it
   modalContainer.innerHTML = `
-    <div class="max-h-[70%] max-w-[50%] flex flex-col items-center justify-between gap-2 rounded-md p-4 text-white" style="background-color:${DEPARTMENT_COLORS[eventItem.department]};">
-      <h3 class="max-w-full text-4xl p-2 font-medium whitespace-nowrap truncate">${eventItem.name}</h3>
-      <div class="max-w-full flex flex-row gap-8 text-xl font-medium whitespace-nowrap">
+    <div class="max-h-[70%] max-w-[50%] flex flex-col items-center justify-between gap-2 rounded-md p-4 text-[#F6F6F6]" style="background-color:${EVENT_TYPE_COLORS[eventItem.eventType]};">
+      <h3 class="max-w-full text-4xl p-2 font-medium">${eventItem.name}</h3>
+      <div class="max-w-full flex flex-row gap-8 text-xl font-medium">
         <div class="flex flex-row gap-2 items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
             <path d="M11.2387 0C5.02875 0 0 5.04 0 11.25C0 17.46 5.02875 22.5 11.2387 22.5C17.46 22.5 22.5 17.46 22.5 11.25C22.5 5.04 17.46 0 11.2387 0ZM14.9513 16.5487L10.125 11.7113V5.625H12.375V10.7887L16.5487 14.9625L14.9513 16.5487Z" fill="white"/>
@@ -434,7 +449,7 @@ const showModal = (eventItem) => {
           <h4>${eventItem.location}</h4>
         </div>
       </div>
-      <p class="mt-4 font-light">A short description on what the event is about.</p>
+      ${eventItem.description ? `<p class="mt-4 font-light">${eventItem.description}</p>` : ""}
     </div>
   `;
 
@@ -443,6 +458,7 @@ const showModal = (eventItem) => {
     if (e.target === modalContainer) {
       modalContainer.innerHTML = "";
       modalContainer.style.display = "none";
+      modalContainer.style.pointerEvents = "none"; // Disable pointer events when modal is closed so it doesn't block clicking events
     }
   };
 
@@ -460,7 +476,7 @@ const militaryTimeToStandard = (timeString) => {
   const period = hours >= 12 ? "PM" : "AM";
   const standardHours = hours % 12 === 0 ? 12 : hours % 12;
   return `${standardHours}:${minutes.toString().padStart(2, "0")} ${period}`;
-}
+};
 
 // Utility function to convert military time string to numeric value
 // Example: "8:00" -> 8.0, "9:30" -> 9.5, "13:45" -> 13.75

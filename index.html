@@ -4,11 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CAMD Day 2026</title>
+
+  <!-- Link preview / Open Graph -->
+  <meta property="og:title" content="CAMD Day 2026" />
+  <meta property="og:description" content="A festival of arts, media, and design at Northeastern University" />
+  <meta property="og:image" content="https://festivalcamd.netlify.app/assets/images/og-preview.jpg" />
+  <meta property="og:url" content="https://festivalcamd.netlify.app" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter/X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CAMD Day 2026" />
+  <meta name="twitter:description" content="A festival of arts, media, and design at Northeastern University" />
+  <meta name="twitter:image" content="https://festivalcamd.netlify.app/assets/images/og-preview.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Lato font (required by kernl-ui) -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900" rel="stylesheet">
+
+  <!-- kernl-ui Global Elements -->
+  <script src="https://global-packages.cdn.northeastern.edu/global-elements/dist/js/index.umd.js" defer></script>
+  <link rel="stylesheet" href="https://global-packages.cdn.northeastern.edu/global-elements/dist/css/index.css">
+  <script src="https://global-packages.cdn.northeastern.edu/kernl-ui/dist/js/index.umd.js" defer></script>
 </head>
 <body class="bg-camd-gray font-akshar">
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
+
+  <!-- NU Global Footer + Cookie Consent (placed after main.js so footer.js has already mounted) -->
+  <div x-data="NUGlobalElements.footer()" x-init="init()"></div>
+  <div x-data="NUGlobalElements.trustarc()" x-init="init()"></div>
 </body>
 </html>
