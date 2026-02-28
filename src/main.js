@@ -17,7 +17,7 @@ app.innerHTML = [
   renderAbout(),
   renderDepts(),
   // renderDean(),
-  // renderSpeakers(),
+  renderSpeakers(),
   renderSchedule(),
   renderFooter(),
 ].join('');
@@ -27,6 +27,6 @@ initHero();
 initAbout();
 initDepts();
 // initDean();
-// initSpeakers();
+initSpeakers();
 initSchedule();
 initFooter();
