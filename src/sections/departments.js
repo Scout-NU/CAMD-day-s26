@@ -3,7 +3,7 @@ export function render() {
     <section id="departments" class="section-full font-akshar bg-gray-100 py-10 px-5">
         <div class="max-w-[1724px] mx-auto">
             <!-- Header -->
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-10 pl-12">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-10 pl-12 mt-20">
                 OUR DEPARTMENTS
             </h1>
             
@@ -47,12 +47,12 @@ export function render() {
                         </div>
 
                             <!-- Description -->
-                            <div id="dept-description" class="text-lg sm:text-2xl lg:text-3xl xl:text-[40px] font-light leading-[1.75] text-black"></div>
+                            <div id="dept-description" class="dept-description text-lg sm:text-2xl lg:text-3xl xl:text-[40px] font-light leading-[70px] text-black font-[300]"></div>
                             <div class="clear-both"></div>
 
                             <!-- Learn More Button -->
                             <div class="flex justify-center md:justify-end mt-8 pr-12">
-                                <a id="dept-link" href="https://camd.northeastern.edu/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-7 py-2 bg-camd-maroon text-white text-2xl font-normal rounded-sm cursor-pointer transition-colors hover:bg-camd-maroon-hover">
+                                <a id="dept-link" href="https://camd.northeastern.edu/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-7 py-2 bg-camd-maroon text-white text-2xl font-light rounded-sm cursor-pointer transition-colors hover:bg-camd-maroon-hover font-[300] leading-[70px]">
                                     LEARN MORE
                                     <img src="/assets/images/right-arrow.svg" 
                                         alt="" 
