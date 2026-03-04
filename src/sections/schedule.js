@@ -325,12 +325,12 @@ const EVENT_TYPE_COLORS = {
 
 export function render() {
   return `
-    <section class="section-full flex flex-col p-5 pb-2 my-20 font-akshar" id="schedule">
+    <section class="section-full flex flex-col p-5 pb-2 mt-14 mb-4 font-akshar" id="schedule">
       <!-- Header -->
-      <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-10 pl-12">SCHEDULE</h1>
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mt-6 mb-4 pl-12">SCHEDULE</h1>
 
       <!-- Schedule Legend -->
-      <div class="flex flex-row justify-start items-center w-full mb-4 pl-12">
+      <div class="flex flex-row justify-start items-center w-full mb-2 pl-12">
         <div class="flex flex-wrap gap-4 justify-center">
           ${Object.entries(EVENT_TYPE_COLORS)
             .map(
@@ -346,9 +346,9 @@ export function render() {
       </div>
 
       <!-- Main Schedule -->
-      <div class="ml-12">
+      <div class="mx-12">
         <div class="w-full h-6 bg-[#67192F]"></div>
-        <div class="relative w-full h-[75vh] overflow-scroll" id="schedule-frame">
+        <div class="relative w-full h-[65vh] overflow-scroll" id="schedule-frame">
           <div id="schedule-times" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 grid grid-rows-12 z-50 pointer-events-none"></div>
           <div id="schedule-events" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 w-full flex flex-row px-24 gap-8 overscroll-none text-[#F6F6F6]"></div>
           <div id="event-modal-container" class="sticky top-0 left-0 flex h-full justify-center items-center pointer-events-none z-[999]"></div>
