@@ -3,7 +3,6 @@ export function render() {
     <nav id="navbar" class="fixed top-0 w-full z-50 flex justify-end gap-14 px-16 py-6 transition-transform duration-300 ease-in-out">
       <a href="#about"       data-section="about"       class="nav-link text-white text-4xl font-akshar transition-colors">ABOUT</a>
       <a href="#schedule"    data-section="schedule"    class="nav-link text-white text-4xl font-akshar transition-colors">SCHEDULE</a>
-      <a href="#speakers" data-section="speakers" class="nav-link text-white text-4xl font-akshar transition-colors">SPEAKERS</a>
       <a href="#departments" data-section="departments" class="nav-link text-white text-4xl font-akshar transition-colors">DEPARTMENTS</a>
     </nav>
   `;
