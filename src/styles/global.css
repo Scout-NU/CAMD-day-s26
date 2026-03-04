@@ -21,6 +21,12 @@ html {
   .section-full {
     @apply min-h-screen w-full relative overflow-hidden;
   }
+
+  .dept-description {
+    font-weight: 300 !important;
+    line-height: 70px !important;
+    font-size: 30px !important;
+  }
 }
 
 @layer utilities {

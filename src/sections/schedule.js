@@ -65,9 +65,18 @@ const EVENTS = [
     description: "",
   },
   {
+    name: "Experimental Video with Julia Hechtman",
+    location: "Ryder 239",
+    start: "13:30",
+    end: "14:30",
+    department: "A+D",
+    eventType: "Showcase",
+    description: "",
+  },
+  {
     name: "Paper and Graphic Demo",
     location: "Ryder 239",
-    start: "11:30",
+    start: "10:30",
     end: "12:00",
     department: "A+D",
     eventType: "Showcase",
@@ -84,27 +93,27 @@ const EVENTS = [
   },
   {
     name: "Exhibition of Photography Student Work",
-    location: "2nd Floor Bulletin Boards",
-    start: "8:30",
-    end: "17:30",
+    location: "Ryder 2nd Floor Bulletin Boards",
+    start: "9:00",
+    end: "17:00",
     department: "A+D",
     eventType: "Showcase",
     description: "",
   },
   {
     name: "Exhibition of Faculty Graphic Design Work",
-    location: "3rd Floor White Shelves",
-    start: "8:30",
-    end: "17:30",
+    location: "Ryder 3rd Floor White Shelves",
+    start: "9:00",
+    end: "17:00",
     department: "A+D",
     eventType: "Showcase",
     description: "",
   },
   {
     name: "Exhibition of Art + Design Fundamentals Student Work",
-    location: "4th Floor Hallway",
-    start: "8:30",
-    end: "17:30",
+    location: "Ryder 4th Floor Hallway",
+    start: "9:00",
+    end: "17:00",
     department: "A+D",
     eventType: "Showcase",
     description: "",
@@ -155,11 +164,11 @@ const EVENTS = [
     description: "",
   },
   {
-    name: "Open Classroom: Improvisation with Sylke Meyer",
-    location: "Ryder 372",
-    start: "15:25",
-    end: "17:05",
-    department: "Theatre",
+    name: "Open Classroom: Representational Drawing",
+    location: "Ryder 405",
+    start: "11:00",
+    end: "12:30",
+    department: "A+D",
     eventType: "Open Classroom",
     description: "",
   },
@@ -240,8 +249,8 @@ const EVENTS = [
   {
     name: "Stabilized Earth Blocks (SEB) Research Samples Showcase with Killion Mokwete",
     location: "Ryder Hall Arch Hallway",
-    start: "8:30",
-    end: "17:30",
+    start: "9:00",
+    end: "17:00",
     department: "SoA",
     eventType: "Showcase",
     description: "",
@@ -249,8 +258,8 @@ const EVENTS = [
   {
     name: "Africa Built Heritage: Digital Documentation of Heritage Sites in Benin VR Demonstration with Killion Mokwete",
     location: "Ryder Hall Arch Hallway / MSO",
-    start: "8:30",
-    end: "17:30",
+    start: "9:00",
+    end: "11:00",
     department: "SoA",
     eventType: "Showcase",
     description: "",
@@ -258,8 +267,8 @@ const EVENTS = [
   {
     name: "Benin Built Heritage: Master's Student Research Showcase",
     location: "Ruggles",
-    start: "8:30",
-    end: "17:30",
+    start: "9:00",
+    end: "17:00",
     department: "SoA",
     eventType: "Showcase",
     description: "",
@@ -316,16 +325,12 @@ const EVENT_TYPE_COLORS = {
 
 export function render() {
   return `
-    <section class="section-full flex flex-col p-8 pb-2 my-20 font-akshar" id="schedule">
-      <h2 
-        class="font-medium mb-6"
-        style="font-size: clamp(3rem, 6vw, 80px); line-height: 1.09;"
-      >
-        SCHEDULE
-      </h2>
+    <section class="section-full flex flex-col p-5 pb-2 mt-14 mb-4 font-akshar" id="schedule">
+      <!-- Header -->
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mt-6 mb-4 pl-12">SCHEDULE</h1>
 
       <!-- Schedule Legend -->
-      <div class="flex flex-row justify-start items-center w-full mb-4">
+      <div class="flex flex-row justify-start items-center w-full mb-2 pl-12">
         <div class="flex flex-wrap gap-4 justify-center">
           ${Object.entries(EVENT_TYPE_COLORS)
             .map(
@@ -341,15 +346,15 @@ export function render() {
       </div>
 
       <!-- Main Schedule -->
-      <div class="w-full h-6 bg-[#67192F]"></div> 
-
-      <div class="relative w-full h-[75vh] overflow-scroll" id="schedule-frame">
-        <div id="schedule-times" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 grid grid-rows-12 z-50 pointer-events-none"></div>
-        <div id="schedule-events" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 w-full flex flex-row px-24 gap-8 overscroll-none text-[#F6F6F6]"></div>
-        <div id="event-modal-container" class="sticky top-0 left-0 flex h-full justify-center items-center pointer-events-none z-[999]"></div>
+      <div class="mx-12">
+        <div class="w-full h-6 bg-[#67192F]"></div>
+        <div class="relative w-full h-[65vh] overflow-scroll" id="schedule-frame">
+          <div id="schedule-times" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 grid grid-rows-12 z-50 pointer-events-none"></div>
+          <div id="schedule-events" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 w-full flex flex-row px-24 gap-8 overscroll-none text-[#F6F6F6]"></div>
+          <div id="event-modal-container" class="sticky top-0 left-0 flex h-full justify-center items-center pointer-events-none z-[999]"></div>
+        </div>
+        <div class="w-full h-6 bg-[#67192F]"></div>
       </div>
-
-      <div class="w-full h-6 bg-[#67192F]"></div> 
     </section>
   `;
 }

@@ -14,9 +14,9 @@ app.innerHTML = [
   renderNav(),
   renderHero(),
   renderAbout(),
-  renderDepts(),
-  renderSpeakers(),
   renderSchedule(),
+  renderSpeakers(),
+  renderDepts(),
   renderFooter(),
 ].join('');
 
