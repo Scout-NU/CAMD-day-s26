@@ -51,7 +51,7 @@ export function render() {
   const dotsHtml = Array.from({ length: slideCount }, (_, i) => `
     <button
       type="button"
-      class="speaker-dot inline-block w-3 h-3 rounded-full cursor-pointer transition-colors hover:opacity-80 ${i === 0 ? 'filled' : ''}"
+      class="speaker-dot inline-block w-5 h-5 rounded-full cursor-pointer transition-colors hover:opacity-80 ${i === 0 ? 'filled' : ''}"
       data-slide="${i}"
       aria-label="Go to slide ${i + 1}"
       style="${i === 0 ? 'background-color: #7b1236;' : 'border: 2px solid #7b1236; background: transparent;'}"
@@ -67,12 +67,12 @@ export function render() {
         <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight">
           FEATURED SPEAKERS
         </h1>
-        <div class="flex items-center gap-3 lg:pt-4 lg:pr-2 order-last lg:order-none">
+        <div class="flex items-center gap-4 lg:pt-8 lg:pr-2 order-last lg:order-none">
           ${dotsHtml}
         </div>
       </div>
 
-      <div class="mt-12 px-6 sm:px-12">
+      <div class="relative z-10 mt-12 px-6 sm:px-12">
         <div class="overflow-hidden" id="speaker-carousel-viewport">
           <div id="speaker-carousel-track" class="flex transition-transform duration-500 ease-out" style="transform: translateX(0);">
             ${slides.map(speakerSlide).join('')}
@@ -80,10 +80,11 @@ export function render() {
         </div>
       </div>
 
-      <div
-        class="pointer-events-none absolute -right-40 bottom-0 w-80 h-80"
-        style="background-color: #e9d842; clip-path: polygon(55% 0, 100% 0, 100% 100%, 0 100%);"
-      ></div>
+      <img
+        src="/assets/images/star.png"
+        alt=""
+        class="pointer-events-none absolute -right-20 bottom-32 w-96 h-96 object-contain z-0"
+      />
     </section>
   `;
 }
