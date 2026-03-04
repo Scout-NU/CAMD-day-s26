@@ -13,6 +13,7 @@ export function init() {
   const navbar = document.getElementById('navbar');
   const links  = navbar.querySelectorAll('.nav-link');
   const sections = [...links].map(l => document.getElementById(l.dataset.section)).filter(Boolean);
+  const hero = document.getElementById('hero');
 
   const ACTIVE_DARK  = '#facc15';
   const ACTIVE_LIGHT = '#902342';
@@ -28,6 +29,7 @@ export function init() {
 
   function getActiveSection() {
     const mid = window.scrollY + window.innerHeight / 2;
+    if (hero && mid < hero.offsetTop + hero.offsetHeight) return null;
     let active = sections[0];
     for (const s of sections) {
       if (s.offsetTop <= mid) active = s;
@@ -60,7 +62,7 @@ export function init() {
     const activeColor = isLight ? ACTIVE_LIGHT : ACTIVE_DARK;
 
     links.forEach(l => {
-      const isActive = l.dataset.section === activeId;
+      const isActive = activeId != null && l.dataset.section === activeId;
       l.style.color = isActive ? activeColor : textColor;
       l.onmouseenter = () => { if (!isActive) l.style.color = activeColor; };
       l.onmouseleave = () => { if (!isActive) l.style.color = textColor; };
