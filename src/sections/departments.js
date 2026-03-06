@@ -1,6 +1,6 @@
 export function render() {
   return `
-    <section id="departments" class="section-full h-screen font-akshar bg-gray-100 px-5 flex flex-col pt-20">
+    <section id="departments" class="section-full font-akshar bg-gray-100 px-5 flex flex-col pt-20" style="min-height: 100vh; overflow: visible;">
         <div class="max-w-[1724px] mx-auto w-full flex flex-col h-full justify-center py-6">
             <!-- Header -->
             <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0 -mt-10">
