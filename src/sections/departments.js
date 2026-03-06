@@ -1,14 +1,14 @@
 export function render() {
   return `
-    <section id="departments" class="section-full h-screen font-akshar bg-gray-100 px-5 flex flex-col">
-        <div class="max-w-[1724px] mx-auto w-full flex flex-col h-full py-6">
+    <section id="departments" class="section-full h-screen font-akshar bg-gray-100 px-5 flex flex-col pt-20">
+        <div class="max-w-[1724px] mx-auto w-full flex flex-col h-full justify-center py-6">
             <!-- Header -->
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0 -mt-10">
                 OUR DEPARTMENTS
             </h1>
             
             <!-- Main Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-10 items-start flex-1 min-h-0">
+            <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 items-start flex-1 min-h-0">
                 
                 <!-- Department Navigation -->
                 <nav class="flex flex-col gap-2">
@@ -33,26 +33,16 @@ export function render() {
                 </nav>
 
                 <!-- Content Area -->
-                <div class="flex flex-col h-full min-h-0">
-                    
-                    <!-- Description and Image Wrapper -->
-                    <div class="prose max-w-none flex-1 min-h-0 overflow-auto">
-                        <!-- Image -->
-                        <div class="mb-6 xl:ml-6 xl:float-right xl:w-[432px] pr-12">
-                            <div id="dept-image-wrap" class="w-[432px] h-[492px] overflow-hidden">
-                                <img id="dept-image" src="/assets/images/departments-img.svg" 
-                                    alt="" 
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
+                <div id="dept-content" style="display: block;">
+                    <img id="dept-image" src="/assets/images/departments-img.svg" 
+                        alt="" 
+                        style="float: right; width: 350px; height: 400px; object-fit: contain; margin-left: 24px; margin-bottom: 16px; margin-top: -60px; margin-right: 80px;">
 
-                            <!-- Description -->
-                            <div id="dept-description" class="dept-description text-lg sm:text-2xl lg:text-3xl xl:text-[40px] font-light leading-[70px] text-black font-[300]"></div>
-                            <div class="clear-both"></div>
-                        </div>
+                    <p id="dept-description" class="dept-description font-akshar font-light text-black" style="font-size: 2vw; line-height: 1.35;"></p>
 
-                    <!-- Learn More Button -->
-                    <div class="flex justify-end shrink-0 pt-4 pb-2 pr-12">
+                    <div style="clear: both;"></div>
+
+                    <div style="display: flex; justify-content: flex-end; padding-top: 16px; padding-bottom: 8px; padding-right: 48px;">
                         <a id="dept-link" href="https://camd.northeastern.edu/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-7 py-2 bg-camd-maroon text-white text-2xl font-light rounded-sm cursor-pointer transition-colors hover:bg-camd-maroon-hover font-[300] leading-[70px]">
                             LEARN MORE
                             <img src="/assets/images/right-arrow.svg" 
