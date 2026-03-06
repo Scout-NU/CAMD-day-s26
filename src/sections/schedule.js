@@ -194,7 +194,7 @@ const EVENTS = [
     name: "New Collaborative Research Showcase",
     location: "Cabral Center",
     start: "10:30",
-    end: "11:30",
+    end: "12:00",
     department: "CAMD/Research",
     eventType: "Showcase",
     description:
