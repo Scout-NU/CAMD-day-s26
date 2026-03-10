@@ -182,13 +182,13 @@ const EVENTS = [
     description: "",
   },
   {
-    name: "Open Classroom: ARCH5230: Structural Behavior of Precedent Structures with Demi Fang",
+    name: "Open Classroom: ARCH 5230: Long-span structures",
     location: "Churchill 101",
     start: "9:50",
     end: "11:30",
     department: "SoA",
     eventType: "Open Classroom",
-    description: "",
+    description: "Students give presentations on the structural behavior, load path, and design of an iconic long-span precedent structure from around the world. Part of a midterm project for ARCH 5230: Structural Systems taught by Prof. Demi Fang. Please plan to enter between presentations.",
   },
   {
     name: "New Collaborative Research Showcase",
