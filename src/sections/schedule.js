@@ -312,6 +312,16 @@ const EVENTS = [
     description:
       "Students hold a debate on the use of AI in architectural pedagogy at Northeastern University, with background context from the instructor and planned audience participation and conversation.",
   },
+  {
+    name: "Immersive Projections + Qualisys Motion Capture Demonstrations",
+    location: "Shillman 235/240",
+    start: "9:45",
+    end: "10:15",
+    department: "MSO",
+    eventType: "Showcase",
+    description:
+      "Two back-to-back technology demonstrations hosted by the Media Studios Organization. From 9:45–10:00 AM, a demonstration of Immersive Projection will show current capabilities in large-scale visual display, followed by a Qualisys Motion Capture demonstration from 10:00–10:15 AM. Both sessions illustrate existing functionality in the studios while providing context for how these tools will be more fully supported once AI-mediated campus infrastructure is in place.",
+  },
 ];
 
 const EVENT_TYPE_COLORS = {
