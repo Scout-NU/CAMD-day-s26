@@ -1,34 +1,48 @@
 export function render() {
   return `
     <section id="about" class="section-full relative">
-      <!-- Background image (right side) -->
+      <!-- Background image -->
       <div class="absolute inset-0 z-0">
         <img
           src="/assets/images/about-bg.jpg"
           alt="Ryder Hall at Northeastern University"
-          class="h-full object-cover"
-          style="width: 130%; margin-left: 10%;"
+          class="w-full h-full object-cover md:w-auto"
+          style=""
+          id="about-bg-img"
         />
       </div>
 
-      <!-- White diagonal panel (left side) -->
+      <!-- Mobile: centered card over the image -->
+      <div class="absolute inset-0 z-10 flex items-center justify-center px-6 md:hidden">
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-8 py-10 text-center max-w-md shadow-lg">
+          <h2
+            class="font-akshar font-medium text-black text-3xl sm:text-4xl mb-4"
+            style="line-height: 1.09;"
+          >
+            ABOUT<br />CAMD DAY
+          </h2>
+          <p
+            class="font-akshar font-light text-black text-base sm:text-lg"
+            style="line-height: 1.35;"
+          >
+            CAMD is a community of creators, designers, and communicators in Ryder Hall at Northeastern, using data and emerging tech to solve real problems and push what's possible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Desktop: diagonal panel (unchanged) -->
       <div
-        class="absolute top-0 left-0 h-full bg-camd-gray z-10"
-        style="width: 43%; clip-path: polygon(0 0, 62% 0, 100% 100%, 0 100%);"
+        class="absolute top-0 left-0 h-full bg-camd-gray z-10 hidden md:block md:w-[43%]"
+        id="about-panel"
+        style="clip-path: none;"
       >
-
-
-        <!-- Content centered -->
-        <div class="h-full flex flex-col justify-center gap-10 pl-[8%] pr-[10%] pt-[0%]" style="max-width: 80%;">
-          <!-- ABOUT CAMD DAY heading -->
+        <div class="h-full flex flex-col justify-center gap-10 pl-[8%] pr-[10%]" style="max-width: 80%;">
           <h2
             class="font-akshar font-medium text-black"
             style="font-size: 5vw; line-height: 1.09;"
           >
             ABOUT<br />CAMD DAY
           </h2>
-
-          <!-- Description -->
           <p
             class="font-akshar font-light text-black"
             style="font-size: 2vw; line-height: 1.35;"

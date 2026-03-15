@@ -11,7 +11,7 @@ export function render() {
       </div>
 
       <!-- Title text — single vw-based parent controls everything -->
-      <div class="relative z-10 pl-12 pb-5">
+      <div class="relative z-10 pl-4 sm:pl-12 pb-5">
         <div class="font-akshar" style="font-size: 12vw;">
           <span class="block text-white font-light tracking-tight" style="font-size: 0.25em; margin-bottom: 0.3em; margin-left: 0.3em;">MARCH 17, 2026</span>
           <span class="block text-white font-bold leading-[0.85] tracking-tight">CAMD</span>
