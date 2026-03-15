@@ -337,15 +337,15 @@ export function render() {
   return `
     <section class="section-full flex flex-col p-5 pb-2 mt-14 mb-4 font-akshar" id="schedule">
       <!-- Header -->
-      <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mt-6 mb-4 pl-12">SCHEDULE</h1>
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mt-6 mb-4 sm:pl-12">SCHEDULE</h1>
 
       <!-- Schedule Legend -->
-      <div class="flex flex-row justify-start items-center w-full mb-2 pl-12">
-        <div class="flex flex-wrap gap-4 justify-center">
+      <div class="flex flex-row justify-start items-center w-full mb-2 sm:pl-12">
+        <div class="flex gap-2 justify-around">
           ${Object.entries(EVENT_TYPE_COLORS)
             .map(
               ([dept, color]) => `
-              <div class="flex items-center">
+              <div class="flex items-center whitespace-nowrap">
                 <div class="w-4 h-4 mr-2 rounded-sm" style="background-color: ${color};"></div>
                 <span class="text-sm">${dept}</span>
               </div>
@@ -356,12 +356,14 @@ export function render() {
       </div>
 
       <!-- Main Schedule -->
-      <div class="mx-12">
+      <div class="sm:mx-12">
         <div class="w-full h-6 bg-[#67192F]"></div>
-        <div class="relative w-full h-[65vh] overflow-scroll" id="schedule-frame">
-          <div id="schedule-times" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 grid grid-rows-12 z-50 pointer-events-none"></div>
-          <div id="schedule-events" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 w-full flex flex-row px-24 gap-8 overscroll-none text-[#F6F6F6]"></div>
-          <div id="event-modal-container" class="sticky top-0 left-0 flex h-full justify-center items-center pointer-events-none z-[999]"></div>
+        <div class="relative">
+          <div class="relative w-full h-[65vh] overflow-scroll" id="schedule-frame">
+            <div id="schedule-times" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="sticky left-0 grid grid-rows-12 z-50 pointer-events-none"></div>
+            <div id="schedule-events" style="height: ${SCHEDULE_SCROLL_HEIGHT}vh;" class="absolute top-0 left-0 w-full flex flex-row px-24 gap-8 overscroll-none text-[#F6F6F6]"></div>
+          </div>
+          <div id="event-modal-container" class="absolute inset-0 flex h-full justify-center items-center pointer-events-none z-[999]"></div>
         </div>
         <div class="w-full h-6 bg-[#67192F]"></div>
       </div>
@@ -448,23 +450,23 @@ const showModal = (eventItem) => {
   modalContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black background
   modalContainer.style.pointerEvents = "auto"; // Enable pointer events to allow clicking outside the modal to close it
   modalContainer.innerHTML = `
-    <div class="max-h-[70%] max-w-[50%] flex flex-col items-center justify-between gap-2 rounded-md p-4 text-[#F6F6F6]" style="background-color:${EVENT_TYPE_COLORS[eventItem.eventType]};">
-      <h3 class="max-w-full text-4xl p-2 font-medium">${eventItem.name}</h3>
-      <div class="max-w-full flex flex-row gap-8 text-xl font-medium">
-        <div class="flex flex-row gap-2 items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+    <div class="max-h-[70%] max-w-[70%] sm:max-w-[50%] flex flex-col items-center justify-between gap-2 rounded-md p-2 sm:p-4 text-[#F6F6F6] overflow-y-auto" style="background-color:${EVENT_TYPE_COLORS[eventItem.eventType]};">
+      <h3 class="max-w-full text-lg sm:text-4xl p-2 font-medium text-center">${eventItem.name}</h3>
+      <div class="max-w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-md sm:text-xl font-medium">
+        <div class="flex flex-row gap-2 items-center text-center">
+          <svg class="size-[20px] sm:size-[23px]" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
             <path d="M11.2387 0C5.02875 0 0 5.04 0 11.25C0 17.46 5.02875 22.5 11.2387 22.5C17.46 22.5 22.5 17.46 22.5 11.25C22.5 5.04 17.46 0 11.2387 0ZM14.9513 16.5487L10.125 11.7113V5.625H12.375V10.7887L16.5487 14.9625L14.9513 16.5487Z" fill="white"/>
           </svg>
-          <h4>${militaryTimeToStandard(eventItem.start)} - ${militaryTimeToStandard(eventItem.end)}</h4>
+          <h4 class="text-center">${militaryTimeToStandard(eventItem.start)} - ${militaryTimeToStandard(eventItem.end)}</h4>
         </div>
-        <div class="flex flex-row gap-2 items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" viewBox="0 0 16 23" fill="none">
+        <div class="flex flex-row gap-2 items-center text-center">
+          <svg class="w-[14px] h-[20px] sm:w-[16px] sm:h-[23px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 23" fill="none">
             <path d="M7.875 0C3.52125 0 0 3.52125 0 7.875C0 13.7812 7.875 22.5 7.875 22.5C7.875 22.5 15.75 13.7812 15.75 7.875C15.75 3.52125 12.2288 0 7.875 0ZM7.875 10.6875C6.3225 10.6875 5.0625 9.4275 5.0625 7.875C5.0625 6.3225 6.3225 5.0625 7.875 5.0625C9.4275 5.0625 10.6875 6.3225 10.6875 7.875C10.6875 9.4275 9.4275 10.6875 7.875 10.6875Z" fill="white"/>
           </svg>
-          <h4>${eventItem.location}</h4>
+          <h4 class="text-center">${eventItem.location}</h4>
         </div>
       </div>
-      ${eventItem.description ? `<p class="mt-4 font-light">${eventItem.description}</p>` : ""}
+      ${eventItem.description ? `<p class="text-center mt-4 font-light">${eventItem.description}</p>` : ""}
     </div>
   `;
 
