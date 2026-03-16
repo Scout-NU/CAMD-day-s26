@@ -1,17 +1,23 @@
 export function render() {
   return `
-    <section id="departments" class="section-full font-akshar bg-gray-100 px-5 flex flex-col pt-20" style="min-height: 100vh; overflow: visible;">
+    <section id="departments" class="section-full font-akshar bg-gray-100 px-5 flex flex-col pt-20 text-left" style="min-height: 100vh; overflow: visible; font-weight:300;">
         <div class="max-w-[1724px] mx-auto w-full flex flex-col h-full justify-center py-6">
             <!-- Header -->
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0 -mt-10">
-                OUR DEPARTMENTS
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pb-6 shrink-0 -mt-10" style="font-size: 40px; text-align: left; font-weight:500;">
+              OUR DEPARTMENTS
             </h1>
             
-            <!-- Main Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 items-start flex-1 min-h-0">
+            <!-- Mobile carousel -->
+            <div id="mobile-carousel" class="block lg:hidden mb-6">
+              <div class="mobile-carousel-inner flex overflow-x-auto snap-x snap-mandatory pb-6" style="-webkit-overflow-scrolling: touch; padding-left: calc((100% - 294px)/2); gap:16px;">
+              </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="hidden lg:grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 items-start flex-1 min-h-0">
                 
                 <!-- Department Navigation -->
-                <nav class="flex flex-col gap-2">
+                <nav class="flex flex-col gap-2" style="font-weight:300">
                     <div data-dept="architecture" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-camd-maroon text-white cursor-pointer transition-colors hover:bg-camd-maroon-hover">
                         ARCHITECTURE
                     </div>
@@ -38,7 +44,7 @@ export function render() {
                         alt="" 
                         style="float: right; width: 350px; height: 400px; object-fit: contain; margin-left: 24px; margin-bottom: 16px; margin-top: -60px; margin-right: 80px;">
 
-                    <p id="dept-description" class="dept-description font-akshar font-light text-black" style="font-size: 2vw; line-height: 1.35;"></p>
+                      <p id="dept-description" class="dept-description font-akshar font-light text-black" style="font-size: 2vw; line-height: 1.45; font-weight:300; margin-top:0; padding-top:0;"></p>
 
                     <div style="clear: both;"></div>
 
@@ -102,8 +108,55 @@ export function init() {
     },
   };
 
+    // Mobile carousel
+    const mobileCarouselInner = document.querySelector("#mobile-carousel .mobile-carousel-inner");
+    if (mobileCarouselInner) {
+      Object.keys(departments).forEach((key) => {
+        const d = departments[key];
+        const navItem = document.querySelector(`.department-item[data-dept='${key}']`);
+        const rawTitle = navItem ? navItem.textContent.trim() : key.toUpperCase();
+        const title = rawTitle
+          .toLowerCase()
+          .split(' ')
+          .map((w) => (w.length ? w.charAt(0).toUpperCase() + w.slice(1) : w))
+          .join(' ');
+
+        const card = document.createElement("article");
+        card.className = "mobile-card snap-start flex-shrink-0 mr-4";
+        card.dataset.dept = key;
+        card.style.width = "294px";
+        card.style.height = "495px";
+        card.style.background = "#67192F";
+        card.style.color = "#ffffff";
+        card.style.borderRadius = "0px";
+        card.style.padding = "16px";
+        card.style.boxSizing = "border-box";
+
+        card.innerHTML = `
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0;height:100%;">
+              <div style="width:270px;height:172px;overflow:hidden;border-radius:4px;flex-shrink:0;margin:0;padding:0;align-self:center;">
+                <img src="${d.image}" alt="${d.alt || ''}" style="width:100%;height:100%;object-fit:cover;display:block;margin:0;">
+              </div>
+              <h3 style="font-size:32px;margin:0;text-align:left;color:#ffffff;font-weight:500;">${title}</h3>
+              <p style="font-size:12px;color:#ffffff;text-align:left;overflow:auto;flex:1;margin:0 0 12px 0;line-height:1.45;font-weight:300;padding-top:0;">${d.description}</p>
+            </div>
+          `;
+        mobileCarouselInner.appendChild(card);
+      });
+
+      const mobileCards = mobileCarouselInner.querySelectorAll(".mobile-card");
+      mobileCards.forEach((c) => {
+        c.addEventListener("click", (ev) => {
+          const key = c.dataset.dept;
+          const navEl = document.querySelector(`.department-item[data-dept='${key}']`);
+          setActive(key, navEl);
+          if (!ev.defaultPrevented) c.scrollIntoView({ behavior: "smooth", inline: "center" });
+        });
+      });
+    }
+
   function setActive(deptKey, clickedEl) {
-    // update active buttons
+    // set active buttons
     departmentItems.forEach((i) => {
       i.classList.remove(
         "bg-camd-maroon",
@@ -127,20 +180,19 @@ export function init() {
 
     const data = departments[deptKey] || departments.architecture;
 
-    // update image
+    // set image
     if (imgEl) {
       imgEl.src = data.image;
       imgEl.alt = data.alt || "";
     }
 
-    // update description
+    // set description
     if (descEl) descEl.textContent = data.description;
 
-    // update link
+    // set link
     if (linkEl) linkEl.href = data.link || "#";
   }
 
-  // listeners
   departmentItems.forEach((item) => {
     item.addEventListener("click", () => {
       const key =
