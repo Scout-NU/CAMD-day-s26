@@ -34,7 +34,7 @@ html {
     font-size: 24vw !important;
   }
   #hero > div.relative {
-    padding-bottom: 15vh !important;
+    transform: translateY(-20vh) !important;
   }
   #about-bg-img {
     object-position: center center !important;
