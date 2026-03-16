@@ -29,6 +29,71 @@ html {
   }
 }
 
+@media (max-width: 767px) {
+  #hero .font-akshar {
+    font-size: 24vw !important;
+  }
+  #hero > div.relative {
+    padding-bottom: 15vh !important;
+  }
+  #about-bg-img {
+    object-position: center center !important;
+  }
+  #navbar {
+    gap: 1rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+  #navbar .nav-link {
+    font-size: 1rem !important;
+  }
+  .footer-inner {
+    flex-direction: column !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .footer-border-line {
+    display: none !important;
+  }
+  .footer-logo-col {
+    width: 100% !important;
+    padding: 8px 0 16px 0 !important;
+  }
+  .footer-divider {
+    width: 100% !important;
+    height: 1px !important;
+    margin: 8px 0 !important;
+  }
+  .footer-nav-col {
+    grid-template-columns: 1fr !important;
+    padding: 8px 0 !important;
+  }
+  .footer-nav-col > div:last-child {
+    padding-left: 0 !important;
+  }
+  .footer-nav-col a {
+    font-size: 16px !important;
+    padding: 4px 0 !important;
+  }
+  .footer-logo-col img {
+    width: 180px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #about-panel {
+    clip-path: polygon(0 0, 62% 0, 100% 100%, 0 100%) !important;
+    max-width: 43%;
+    background-color: #e8e8e8 !important;
+  }
+  #about-panel > div {
+    max-width: 80% !important;
+  }
+  #about-bg-img {
+    width: 130% !important;
+    margin-left: 10% !important;
+  }
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

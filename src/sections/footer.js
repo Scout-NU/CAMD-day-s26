@@ -1,22 +1,22 @@
 export function render() {
   return `
     <!-- CAMD Gray Footer -->
-    <footer style="background-color: #e8e8e8; font-family: Lato, sans-serif; font-size: 16px; color: #1f1f1f; width: 100%; box-sizing: border-box;">
-      <div style="display: flex; flex-direction: row; padding-left: 32px; padding-top: 28px;">
+    <footer id="camd-footer" style="background-color: #e8e8e8; font-family: Lato, sans-serif; font-size: 16px; color: #1f1f1f; width: 100%; box-sizing: border-box;">
+      <div class="footer-inner" style="display: flex; padding-left: 32px; padding-top: 28px;">
 
-        <!-- Left border line -->
-        <div style="width: 1px; background-color: #1f1f1f; flex-shrink: 0;"></div>
+        <!-- Left border line (hidden on mobile) -->
+        <div class="footer-border-line" style="width: 1px; background-color: #1f1f1f; flex-shrink: 0;"></div>
 
         <!-- Left column: logo + socials -->
-        <div style="width: 260px; flex-shrink: 0; padding: 8px 28px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="footer-logo-col" style="width: 260px; flex-shrink: 0; padding: 8px 28px; display: flex; flex-direction: column; justify-content: space-between;">
           <img
             src="https://d3tvevvhad9ws1.cloudfront.net/wp-content/uploads/2023/01/Logo.png"
             alt="Northeastern University College of Arts, Media and Design"
             style="width: 220px; height: auto; display: block;"
           >
 
-          <!-- Social icons — aligned to bottom of nav (careers row) -->
-          <div style="display: flex; gap: 16px; align-items: center; padding-bottom: 8px;">
+          <!-- Social icons -->
+          <div style="display: flex; gap: 16px; align-items: center; padding-bottom: 8px; padding-top: 20px;">
             <a href="https://x.com/NU_CAMD" target="_blank" rel="noopener noreferrer" aria-label="CAMD on X" style="color: #1f1f1f;">
               <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M21.742 21.75l-7.563-11.179 7.056-8.321h-2.456l-5.691 6.714-4.54-6.714H2.359l7.29 10.776L2.25 21.75h2.456l6.035-7.118 4.818 7.118h6.191-.008zM7.739 3.818L18.81 20.182h-2.447L5.29 3.818h2.447z"/></svg>
             </a>
@@ -40,10 +40,10 @@ export function render() {
         </div>
 
         <!-- Center divider line -->
-        <div style="width: 1px; background-color: #1f1f1f; flex-shrink: 0;"></div>
+        <div class="footer-divider" style="width: 1px; background-color: #1f1f1f; flex-shrink: 0;"></div>
 
-        <!-- Right column: nav links in two columns -->
-        <div style="flex: 1; padding: 8px 60px; display: grid; grid-template-columns: 1fr 1fr; align-content: start;">
+        <!-- Right column: nav links -->
+        <div class="footer-nav-col" style="flex: 1; padding: 8px 60px; display: grid; grid-template-columns: 1fr 1fr; align-content: start;">
 
           <!-- Left nav column -->
           <div>
