@@ -27,6 +27,12 @@ export function render() {
           >
             CAMD is a community of creators, designers, and communicators in Ryder Hall at Northeastern, using data and emerging tech to solve real problems and push what's possible.
           </p>
+          <p
+            class="font-akshar font-light text-black text-base sm:text-lg mt-4"
+            style="line-height: 1.35;"
+          >
+            On CAMD Day, explore this community's dynamic research, experiential learning and creative impact through live performances, engaging panels, work showcases, exhibitions, technology demonstrations, and more.
+          </p>
         </div>
       </div>
 
@@ -48,6 +54,12 @@ export function render() {
             style="font-size: 2vw; line-height: 1.35;"
           >
             CAMD is a community of creators, designers, and communicators in Ryder Hall at Northeastern, using data and emerging tech to solve real problems and push what's possible.
+          </p>
+          <p
+            class="font-akshar font-light text-black"
+            style="font-size: 2vw; line-height: 1.35;"
+          >
+            On CAMD Day, explore this community's dynamic research, experiential learning and creative impact through live performances, engaging panels, work showcases, exhibitions, technology demonstrations, and more.
           </p>
         </div>
       </div>
