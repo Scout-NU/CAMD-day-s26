@@ -14,7 +14,7 @@ export function render() {
 
       <!-- Mobile: centered card over the image -->
       <div class="absolute inset-0 z-10 flex items-center justify-center px-6 md:hidden">
-        <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-8 py-10 text-center max-w-md shadow-lg">
+        <div class="bg-white px-8 py-10 text-center max-w-md shadow-lg">
           <h2
             class="font-akshar font-medium text-black text-3xl sm:text-4xl mb-4"
             style="line-height: 1.09;"
