@@ -84,6 +84,15 @@ html {
   .footer-logo-col img {
     width: 180px !important;
   }
+  #departments h1 {
+    font-size: 2.5rem !important;
+    padding-left: 0 !important;
+  }
+  #departments {
+    padding-top: 2rem !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
 }
 
 @media (min-width: 768px) {
