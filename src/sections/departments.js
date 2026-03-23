@@ -178,6 +178,7 @@ export function init() {
       );
     }
 
+    // this is data
     const data = departments[deptKey] || departments.architecture;
 
     // set image
