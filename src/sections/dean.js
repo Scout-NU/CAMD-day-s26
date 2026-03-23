@@ -37,7 +37,7 @@ export function render() {
     </section>
   `;
 }
-
+// hello
 export function init() {
   // GSAP fade-in on scroll will go here
 }
