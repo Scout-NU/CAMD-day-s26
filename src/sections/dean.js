@@ -38,6 +38,7 @@ export function render() {
   `;
 }
 // hello
+//hi
 export function init() {
   // GSAP fade-in on scroll will go here
 }
