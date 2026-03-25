@@ -13,7 +13,7 @@ export function render() {
       <!-- Title text — single vw-based parent controls everything -->
       <div class="relative z-10 pl-4 sm:pl-12 pb-5">
         <div class="font-akshar" style="font-size: 12vw;">
-          <span class="block text-white font-light tracking-tight" style="font-size: 0.25em; margin-bottom: 0.3em; margin-left: 0.3em;">MARCH 17, 2026</span>
+          <span class="block text-yellow font-light tracking-tight" style="font-size: 0.25em; margin-bottom: 0.3em; margin-left: 0.3em;">MARCH 17, 2026</span>
           <span class="block text-white font-bold leading-[0.85] tracking-tight">CAMD</span>
           <div class="flex items-end" style="margin-top: -0.05em;">
             <p class="font-light" style="font-size: 0.25em; line-height: 1.2; color: #E9D842; width: 9em; padding-right: 0.2em; padding-left: 0.4em; padding-bottom: 8.8em;">
