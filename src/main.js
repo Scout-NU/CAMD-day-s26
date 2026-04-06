@@ -1,5 +1,7 @@
 import './styles/global.css';
 
+import { render as renderLoadingScreen, init as initLoadingScreen } from './components/loadingScreen.js';
+
 import { render as renderNav,    init as initNav }    from './components/navbar.js';
 import { render as renderHero,   init as initHero }   from './sections/hero.js';
 import { render as renderAbout,  init as initAbout }  from './sections/about.js';
@@ -24,3 +26,6 @@ initAbout();
 initDepts();
 initSchedule();
 initFooter();
+
+renderLoadingScreen();
+initLoadingScreen();
