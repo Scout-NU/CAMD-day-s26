@@ -373,8 +373,6 @@ export function render() {
 
 export function init() {
   renderSchedule();
-  // mountFilter();
-  // setupDepartmentFilters();
 
   const eventModalContainer = document.getElementById("event-modal-container");
   eventModalContainer.style.height =
