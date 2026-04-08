@@ -1,6 +1,6 @@
 export function render() {
   return `
-    <section id="recap" class="h-screen w-full relative overflow-hidden font-akshar bg-camd-gray px-5 py-16 flex flex-col">
+    <section id="recap" class="h-screen w-full relative overflow-hidden font-akshar bg-white px-5 py-16 flex flex-col">
       <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0">
         Event Recap
       </h1>

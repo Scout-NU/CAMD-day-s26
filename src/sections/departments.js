@@ -1,6 +1,6 @@
 export function render() {
   return `
-    <section id="departments" class="section-full font-akshar bg-gray-100 px-5 flex flex-col pt-20 text-left" style="min-height: 100vh; overflow: visible; font-weight:300;">
+    <section id="departments" class="section-full font-akshar bg-white px-5 flex flex-col pt-20 text-left" style="min-height: 100vh; overflow: visible; font-weight:300;">
         <div class="max-w-[1724px] mx-auto w-full flex flex-col h-full justify-center py-6">
             <!-- Header -->
             <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0 -mt-10">
@@ -21,19 +21,19 @@ export function render() {
                     <div data-dept="architecture" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-camd-maroon text-white cursor-pointer transition-colors hover:bg-camd-maroon-hover">
                         ARCHITECTURE
                     </div>
-                    <div data-dept="art" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-gray-100 text-black cursor-pointer transition-colors hover:bg-gray-200">
+                    <div data-dept="art" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-white text-black cursor-pointer transition-colors hover:bg-gray-100">
                         ART + DESIGN
                     </div>
-                    <div data-dept="comm" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-gray-100 text-black cursor-pointer transition-colors hover:bg-gray-200">
+                    <div data-dept="comm" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-white text-black cursor-pointer transition-colors hover:bg-gray-100">
                         COMMUNICATION STUDIES
                     </div>
-                    <div data-dept="journalism" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-gray-100 text-black cursor-pointer transition-colors hover:bg-gray-200">
+                    <div data-dept="journalism" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-white text-black cursor-pointer transition-colors hover:bg-gray-100">
                         JOURNALISM
                     </div>
-                    <div data-dept="music" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-gray-100 text-black cursor-pointer transition-colors hover:bg-gray-200">
+                    <div data-dept="music" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-white text-black cursor-pointer transition-colors hover:bg-gray-100">
                         MUSIC
                     </div>
-                    <div data-dept="theatre" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-gray-100 text-black cursor-pointer transition-colors hover:bg-gray-200">
+                    <div data-dept="theatre" class="department-item px-12 sm:px-16 lg:px-[72px] py-6 text-2xl sm:text-3xl lg:text-4xl xl:text-[48px] font-medium leading-tight bg-white text-black cursor-pointer transition-colors hover:bg-gray-100">
                         THEATRE
                     </div>
                 </nav>
@@ -163,13 +163,13 @@ export function init() {
         "text-white",
         "hover:bg-camd-maroon-hover",
       );
-      i.classList.add("bg-gray-100", "text-black", "hover:bg-gray-200");
+      i.classList.add("bg-white", "text-black", "hover:bg-gray-100");
     });
     if (clickedEl) {
       clickedEl.classList.remove(
-        "bg-gray-100",
+        "bg-white",
         "text-black",
-        "hover:bg-gray-200",
+        "hover:bg-gray-100",
       );
       clickedEl.classList.add(
         "bg-camd-maroon",

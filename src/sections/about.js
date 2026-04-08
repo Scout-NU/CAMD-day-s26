@@ -38,7 +38,7 @@ export function render() {
 
       <!-- Desktop: diagonal panel (unchanged) -->
       <div
-        class="absolute top-0 left-0 h-full bg-camd-gray z-10 hidden md:block md:w-[43%]"
+        class="absolute top-0 left-0 h-full bg-white z-10 hidden md:block md:w-[43%]"
         id="about-panel"
         style="clip-path: none;"
       >
