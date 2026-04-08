@@ -4,7 +4,7 @@ export function render() {
       <!-- Background image -->
       <div class="absolute inset-0 z-0">
         <img
-          src="/assets/images/about-bg.jpg"
+          src="/assets/images/recap_img.jpg"
           alt="Ryder Hall at Northeastern University"
           class="w-full h-full object-cover md:w-auto"
           style=""
