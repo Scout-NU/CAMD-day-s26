@@ -1,6 +1,6 @@
 export function render() {
   return `
-    <section id="dean" class="section-full bg-camd-gray flex items-center justify-center">
+    <section id="dean" class="section-full bg-white flex items-center justify-center">
       <div class="flex items-center w-full max-w-[1600px] px-16">
         <!-- Left side: Dean photo with starburst -->
         <div class="relative flex-shrink-0" style="width: 40%;">

@@ -55,7 +55,7 @@ function showModalImage(index) {
 
 export function render() {
   return `
-    <section id="gallery" class="section-full font-akshar px-5 py-16 grid grid-cols-none grid-rows-[auto_auto_1fr]">
+    <section id="gallery" class="h-screen w-full relative overflow-hidden font-akshar px-5 py-16 grid grid-cols-none grid-rows-[auto_auto_1fr]">
 
       <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-[110px] font-medium leading-tight mb-6 pl-12 shrink-0">
         GALLERY

@@ -4,7 +4,7 @@ export function render() {
       <!-- Background image -->
       <div class="absolute inset-0 z-0">
         <img
-          src="/assets/images/about-bg.jpg"
+          src="/assets/images/recap_img.jpg"
           alt="Ryder Hall at Northeastern University"
           class="w-full h-full object-cover md:w-auto"
           style=""
@@ -38,7 +38,7 @@ export function render() {
 
       <!-- Desktop: diagonal panel (unchanged) -->
       <div
-        class="absolute top-0 left-0 h-full bg-camd-gray z-10 hidden md:block md:w-[43%]"
+        class="absolute top-0 left-0 h-full bg-white z-10 hidden md:block md:w-[43%]"
         id="about-panel"
         style="clip-path: none;"
       >

@@ -99,7 +99,7 @@ html {
   #about-panel {
     clip-path: polygon(0 0, 62% 0, 100% 100%, 0 100%) !important;
     max-width: 43%;
-    background-color: #e8e8e8 !important;
+    background-color: #ffffff !important;
   }
   #about-panel > div {
     max-width: 80% !important;
